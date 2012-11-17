@@ -1,0 +1,34 @@
+div(ng-controller="RegisterWizardCtrl")
+    div.modal-header
+      button.close(data-dismiss="modal", aria-hidden="true", ng-init="registerStep(2)") ×
+      div.wizard
+        a.current
+          span.badge.badge-inverse 1
+          span Accept policy
+        a
+          span.badge.badge-inverse 2
+          span Country
+        a
+          span.badge.badge-inverse 3
+          span Profile information
+        a
+          span.badge.badge-inverse 4
+          span Payement option
+        a
+          span.badge.badge-inverse 5
+          span Overview
+    div.modal-body
+        form.form-horizontal
+         div.control-group
+           label.control-label(for="policy") Terms and Conditions
+           div.controls
+             textarea.uneditable-input(id="policy", rows="15", style="height: 300px;width: 600px")
+         div.control-group
+           label.control-label(for="acceptedPolicy") Accept the Terms and Conditions
+           div.controls
+             label.checkbox
+               input(type="checkbox", id="acceptedPolicy", ng-model="User.acceptedPolicy")
+               span.inline-help I have read and I accept the Terms and conditions
+    div.modal-footer
+      button.btn(data-dismiss="modal", aria-hidden="true") Cancel registration
+      button.btn.btn-primary(ng-click="nextstep()") Next step

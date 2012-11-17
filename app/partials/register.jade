@@ -1,0 +1,134 @@
+div(ng-controller="RegisterWizardCtrl")
+    div.modal-header
+      button.close(data-dismiss="modal", aria-hidden="true", ng-init="registerStep(2)") ×
+      div.wizard
+        a(ng-class="validateForm(1)", ng-click="step = 1")
+          span.badge.badge-inverse 1
+          span Country
+        a(ng-class="validateForm(2)", ng-click="step = 2")
+          span.badge.badge-inverse 2
+          span Accept policy
+        a(ng-class="validateForm(3)", ng-click="step = 3")
+          span.badge.badge-inverse 3
+          span Profile information
+        a(ng-class="validateForm(4)", ng-click="step = 4; pattern = patterns(User.Profile.payment)")
+          span.badge.badge-inverse 4
+          span Payment option
+        a(ng-class="{current: step == 5}", ng-click="step = 5")
+          span.badge.badge-inverse 5
+          span Overview
+    div.modal-body
+        div(ng-switch="step")
+            // Step 1 default
+            form.form-horizontal(ng-switch-default, name="form", ng-init="$parent.form = form")
+                div.control-group
+                   label.control-label(for="country") Choose your country
+                   div.controls.inline
+                     label.radio
+                         input(type="radio", ng-model="$parent.User.Profile.country", value="no", required="true")
+                         |Norway
+                     label.radio
+                         input(type="radio", name="country", ng-model="$parent.User.Profile.country", value="se")
+                         |Sweden
+                     label.radio
+                          input(type="radio", name="country", ng-model="$parent.User.Profile.country", value="other", checked="true")
+                          |I am not a resident of Sweden or Norway
+
+
+            // Step 2
+            form.form-horizontal(ng-switch-when="2", name="form", ng-init="$parent.form = form")
+             div.control-group
+               label.control-label(for="policy") Terms and Conditions
+               div.controls
+                 textarea.uneditable-input(id="policy", rows="15", style="height: 300px;width: 600px")
+             div.control-group
+               label.control-label(for="acceptedPolicy") Accept the Terms and Conditions
+               div.controls
+                 label.checkbox
+                   input(type="checkbox", id="acceptedPolicy", name="acceptedPolicy", ng-model="$parent.User.acceptedPolicy", required="true")
+                   span.inline-help I have read and I accept the Terms and conditions
+
+
+            // Step 3
+            form.form-horizontal(ng-switch-when="3", novalidate, name="form", ng-init="$parent.form = form")
+                fieldset
+                    legend Website information
+                        div.control-group
+                            label.control-label(for="displayName") Display name
+                            div.controls
+                                input(name="displayName", type="text", ng-model="$parent.User.Profile.displayName")
+                                span
+                                    small.help-inline This will be your name throughout the site.
+                            label.control-label(for="email") Email address
+                            div.controls
+                                input(name="email", type="email", ng-model="$parent.User.email")
+                                span
+                                    small.help-inline Your email is our primary way of contacting you!
+                            label.control-label(for="emailVerify") Verify email address
+                            div.controls
+                                input(name="emailVerify", type="email", ng-model="$parent.User.emailVerify")
+                                span
+                                    small.help-inline Type your email again!
+                    legend Personal Information
+                        div.control-group
+                            label.control-label(for="firstName") First name
+                            div.controls
+                                input(name="firstName", type="text", ng-model="$parent.User.Profile.firstName")
+                                span
+                                    small.help-inline Your first name.
+                            label.control-label(for="lastName") Last name
+                            div.controls
+                                input(name="lastName", type="text", ng-model="$parent.User.Profile.lastName")
+                                span
+                                    small.help-inline Your last name.
+                            label.control-label(for="ssnumber") Social security number
+                            div.controls
+                                input(name="ssnumber", ng-model="$parent.ssnumber", type="text", ng-model="$parent.User.Profile.ssnumber", required="true", ng-pattern="/^([0-9]+){4}([0-9]+){2}([0-9]+){2}([0-9]+){4}$/")
+                                span
+                                    small.help-inline Enter your social security number format YYYYMMDDXXXX.
+                            label.control-label(for="birthday") Date of birth
+                            div.controls
+                                input(name="birthday", type="date", ng-model="$parent.User.Profile.dateOfBirth")
+                                span
+                                    small.help-inline Your birthday date.
+                            label.control-label(for="address") Address
+                            div.controls
+                                input(name="address", type="text", ng-model="$parent.User.Profile.address")
+                                span
+                                    small.help-inline Your residential address!
+                            label.control-label(for="address") Additional address line
+                            div.controls
+                                input(name="addressTwo", type="text", ng-model="$parent.User.Profile.alternativeAddress")
+                                span
+                                    small.help-inline If needed, a second address line!
+                            label.control-label(for="postcode", ng-model="$parent.User.Profile.postcode") Postcode
+                            div.controls
+                                input(name="postcode", type="text")
+                            label.control-label(for="postplace") Postplace
+                            div.controls
+                                input(name="postplace", type="text", ng-model="$parent.User.Profile.postplace")
+            // Step 4
+            form.form-horizontal(ng-switch-when="4", name="form", ng-init="$parent.form = form")
+                div.control-group
+                    label.control-label(for="payment") Choose a payment option
+                    div.controls.inline
+                        label.radio(ng-switch="$parent.User.Profile.payment")
+                            input(type="radio", ng-model="$parent.User.Profile.payment", value="sms", required="true", ng-change="pattern = patterns($parent.User.Profile.payment)")
+                            i.icon-phone
+                            | SMS-Payment
+
+                            input(type="text", ng-switch-when="sms", ng-model="$parent.User.Profile.mobile", ng-pattern="pattern", placeholder="phonenumber")
+                        label.radio
+                            input(type="radio", ng-model="$parent.User.Profile.payment", value="bank", ng-change="pattern = patterns($parent.User.Profile.payment); form.$validate()")
+                            i.icon-money
+                            | Bank transfer
+                div.control-group(ng-show="$parent.User.Profile.payment == 'bank'")
+                    label.control-label Bank payment information
+                    div.controls
+                        div 2095 27 123123
+                        div Lillehammer elektroniske sportsklubb
+                        div Riseenga 10
+                        div 2608 Lillehammer
+    div.modal-footer
+      button.btn(data-dismiss="modal", aria-hidden="true") Cancel registration
+      button.btn.btn-primary(ng-click="nextstep()") Next step

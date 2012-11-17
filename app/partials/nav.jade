@@ -1,0 +1,114 @@
+ul.nav
+  li.dropdown(ng-class="getClass('/home')")
+    a.dropdown-toggle(data-toggle="dropdown",ng-href='#/home', data-target="#")
+      i.icon-white.icon-info-sign
+      span Information
+      b.caret
+    ul.dropdown-menu
+      li
+        a(ng-href='#/about')
+          i.icon-chevron-right
+          span About Lions
+      li
+        a(ng-href='#/organisation')
+          i.icon-map-marker
+          span Organisation
+  li.dropdown(ng-class="getClass('/community')")
+    a.dropdown-toggle(data-toggle="dropdown",ng-href='#/community', data-target="#")
+      i.icon-white.icon-th-list
+      span Community
+      b.caret
+    ul.dropdown-menu
+      li
+        a(ng-href='#/forums')
+          i.icon-th-list
+          span Forums
+      //-
+          li
+            a(ng-href='#/media')
+              i.icon-picture
+              span Media
+      li.dividier-vertical
+  li.dropdown(ng-class="getClass('/teams')")
+    a.dropdown-toggle(data-toggle="dropdown",ng-href='#/teams', data-target="#")
+      span Teams
+      b.caret
+    ul.dropdown-menu.nav-list
+      li.nav-header PC Teams
+      li
+        a(ng-href='#/teams/pc/csgom')
+          i.icon-chevron-right
+          span Counter-Strike: Global Offensive (M)
+      li.nav-header Console Teams
+      li
+        a(ng-href='#/teams/pc/codbo2')
+          i.icon-chevron-right
+          span Call of Duty: Black Ops II (M)
+  //-
+      li.dropdown(ng-class="getClass('/tournaments')")
+          a.dropdown-toggle(data-toggle="dropdown",ng-href='#/tournaments', data-target="#")
+            span Tournaments
+            b.caret
+          ul.dropdown-menu.nav-list
+            li.nav-header Leagues
+            li
+              a(ng-href='#/tournaments/leagues/pc/csgom2013')
+                i.icon-chevron-right
+                span (pc) Counter-Strike: Global Offensive 2013 (M)
+            li.nav-header CUPs
+            li
+              a(ng-href='#/tournaments/cups/pc/tnccsgo1')
+                i.icon-chevron-right
+                span (pc) The Nordic Cooperation CS:GO #1
+            li.nav-header Frag Festivals
+            li
+              a(ng-href='#/tournaments/festivals/pc/fridaynight')
+                i.icon-chevron-right
+                span (pc) Friday-Night!-->
+
+  //-
+      li.dropdown(ng-class="getClass('/gathers')")
+        a.dropdown-toggle(data-toggle="dropdown",ng-href='#/gathers', data-target="#")
+          span Gathers
+          b.caret
+        ul.dropdown-menu.nav-list
+          li.nav-header PC
+          li
+            a(ng-href='#/gathers/pc/csgo')
+              i.icon-chevron-right
+              span Counter-Strike: Global Offensive
+          li.nav-header XBOX 360
+          li
+            a(ng-href='#/tournaments/cups/pc/tnccsgo1')
+              i.icon-chevron-right
+              span Call of Duty: Black Ops II
+          li.nav-header Playstation 3
+          li
+            a(ng-href='#/tournaments/cups/pc/tnccsgo1')
+              i.icon-chevron-right
+              span Call of Duty: Black Ops II
+  li(ng-class="getClass('/contact')")
+    a(ng-href="#/contact") Contact
+
+ul.nav.pull-right
+  li.dropdown
+  div.btn-group
+    a.btn.btn-primary(href="#")
+      i.icon-user.icon-white
+      span Guest
+    a.btn.btn-primary.dropdown-toggle(data-toggle="dropdown",data-target="#",href="#")
+      span.caret
+    ul.dropdown-menu
+      li
+        a(ng-controller="RegisterCtrl", ng-click="start()")
+          i.icon-pencil
+          span Register new account
+        a(href="#")
+          i.icon-envelope
+          span Recover lost password
+//-
+    form.navbar-search.pull-right
+      input.search-query(type="text", placeholder="Search")
+
+
+

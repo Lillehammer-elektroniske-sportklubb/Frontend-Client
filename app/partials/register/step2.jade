@@ -1,0 +1,33 @@
+div(ng-controller="RegisterWizardCtrl")
+    div.modal-header
+      button.close(data-dismiss="modal", aria-hidden="true", ng-init="registerStep(2)") ×
+      div.wizard
+        a
+          span.badge.badge-inverse 1
+          span Accept policy
+        a.current
+          span.badge.badge-inverse 2
+          span Country
+        a
+          span.badge.badge-inverse 3
+          span Profile information
+        a
+          span.badge.badge-inverse 4
+          span Payement option
+        a
+          span.badge.badge-inverse 5
+          span Overview
+    div.modal-body
+        form.form-horizontal
+         div.control-group
+           label.control-label(for="country") Choose your country
+           div.controls
+             input(type="radio", name="country", value="no")
+                Norway
+             input(type="radio", name="country", value="se")
+                Sweden
+             input(type="radio", name="country", value="int")
+                International
+    div.modal-footer
+      button.btn(data-dismiss="modal", aria-hidden="true") Cancel registration
+      button.btn.btn-primary(ng-click="nextstep()") Next step

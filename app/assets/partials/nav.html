@@ -1,0 +1,32 @@
+
+<ul class="nav">
+  <li ng-class="getClass('/home')" class="dropdown"><a data-toggle="dropdown" ng-href="#/home" data-target="#" class="dropdown-toggle"><i class="icon-white icon-info-sign"></i><span>Information</span><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a ng-href="#/about"><i class="icon-chevron-right"></i><span>About Lions</span></a></li>
+      <li><a ng-href="#/organisation"><i class="icon-map-marker"></i><span>Organisation</span></a></li>
+    </ul>
+  </li>
+  <li ng-class="getClass('/community')" class="dropdown"><a data-toggle="dropdown" ng-href="#/community" data-target="#" class="dropdown-toggle"><i class="icon-white icon-th-list"></i><span>Community</span><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a ng-href="#/forums"><i class="icon-th-list"></i><span>Forums</span></a></li>
+      <li class="dividier-vertical"></li>
+    </ul>
+  </li>
+  <li ng-class="getClass('/teams')" class="dropdown"><a data-toggle="dropdown" ng-href="#/teams" data-target="#" class="dropdown-toggle"><span>Teams</span><b class="caret"></b></a>
+    <ul class="dropdown-menu nav-list">
+      <li class="nav-header">PC Teams</li>
+      <li><a ng-href="#/teams/pc/csgom"><i class="icon-chevron-right"></i><span>Counter-Strike: Global Offensive (M)</span></a></li>
+      <li class="nav-header">Console Teams</li>
+      <li><a ng-href="#/teams/pc/codbo2"><i class="icon-chevron-right"></i><span>Call of Duty: Black Ops II (M)</span></a></li>
+    </ul>
+  </li>
+  <li ng-class="getClass('/contact')"><a ng-href="#/contact">Contact</a></li>
+</ul>
+<ul class="nav pull-right">
+  <li class="dropdown"></li>
+  <div class="btn-group"><a href="#" class="btn btn-primary"><i class="icon-user icon-white"></i><span>Guest</span></a><a data-toggle="dropdown" data-target="#" href="#" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a ng-controller="RegisterCtrl" ng-click="start()"><i class="icon-pencil"></i><span>Register new account</span></a><a href="#"><i class="icon-envelope"></i><span>Recover lost password</span></a></li>
+    </ul>
+  </div>
+</ul>

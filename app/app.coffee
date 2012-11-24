@@ -21,6 +21,7 @@ App.config([
     .when('/start', {templateUrl: '/partials/startpage.html'})
     .when('/community', {templateUrl: '/partials/partial1.html'})
     .when('/contact', {templateUrl: '/partials/todo.html'})
+    .when('/lekadmin/news', {templateUrl: '/partials/admin/news/add.html'})
 
     # Catch all
     .otherwise({redirectTo: '/start'})

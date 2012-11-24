@@ -16,3 +16,4 @@ angular.module('Lions.directives', [
   (scope, elm, attrs) ->
     elm.text(version)
 ])
+

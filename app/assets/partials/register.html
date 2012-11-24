@@ -69,9 +69,9 @@
               <div class="controls">
                 <input name="lastName" type="text" ng-model="$parent.User.Profile.lastName"/><span><small class="help-inline">Your last name.</small></span>
               </div>
-              <label for="ssnumber" class="control-label">Social security number</label>
-              <div class="controls">
-                <input name="ssnumber" ng-model="$parent.User.Profile.ssnumber" type="text" required="true" ng-pattern="/^([0-9]+){4}([0-9]+){2}([0-9]+){2}([0-9]+){4}$/"/><span><small class="help-inline">Enter your social security number format YYYYMMDDXXXX.</small></span>
+              <label for="ssnumber" ng-show="$parent.User.Profile.country == 'se'" class="control-label">Social security number</label>
+              <div ng-show="$parent.User.Profile.country == 'se'" class="controls">
+                <input name="ssnumber" ng-model="$parent.User.Profile.ssnumber" type="text" required="{true: $parent.User.Profile.country == 'se'}" ng-pattern="/^([0-9]+){4}([0-9]+){2}([0-9]+){2}([0-9]+){4}$/"/><span><small class="help-inline">Enter your social security number format YYYYMMDDXXXX.</small></span>
               </div>
               <label for="birthday" class="control-label">Date of birth</label>
               <div class="controls">
@@ -85,9 +85,9 @@
               <div class="controls">
                 <input name="addressTwo" type="text" ng-model="$parent.User.Profile.alternativeAddress"/><span><small class="help-inline">If needed, a second address line!</small></span>
               </div>
-              <label for="postcode" ng-model="$parent.User.Profile.postcode" class="control-label">Postcode</label>
+              <label for="postcode" class="control-label">Postcode</label>
               <div class="controls">
-                <input name="postcode" type="text"/>
+                <input name="postcode" type="text" ng-model="$parent.User.Profile.postcode"/>
               </div>
               <label for="postplace" class="control-label">Postplace</label>
               <div class="controls">
@@ -102,22 +102,82 @@
         <div class="control-group">
           <label for="payment" class="control-label">Choose a payment option</label>
           <div class="controls inline">
-            <label ng-switch="$parent.User.Profile.payment" class="radio">
-              <input type="radio" ng-model="$parent.User.Profile.payment" value="sms" required="true" ng-change="pattern = patterns($parent.User.Profile.payment)"/><i class="icon-phone"></i>SMS-Payment
-              <input type="text" ng-switch-when="sms" ng-model="$parent.User.Profile.mobile" ng-pattern="pattern" placeholder="phonenumber"/>
+            <label ng-switch="$parent.User.Profile.payment" ng-show="User.Profile.country == 'no'" class="radio">
+              <input type="radio" ng-model="$parent.User.Profile.payment" value="sms" required="true" ng-change="patterns()"/><i class="icon-phone"></i>SMS-Payment
+              <input type="text" ng-switch-when="sms" ng-model="$parent.User.Profile.mobile" ng-pattern="smspattern()" placeholder="phonenumber"/>
             </label>
-            <label class="radio">
-              <input type="radio" ng-model="$parent.User.Profile.payment" value="bank" ng-change="pattern = patterns($parent.User.Profile.payment); form.$validate()"/><i class="icon-money"></i>Bank transfer
+            <label ng-show="User.Profile.country == 'no'" class="radio">
+              <input type="radio" ng-model="$parent.User.Profile.payment" value="bank" ng-change="patterns()" checked="checked"/><i class="icon-money"></i>Bank transfer
             </label>
+            <p ng-show="User.Profile.country != 'no'">We have currently not opted for any membership fee or packages outside of Norway.</p>
           </div>
         </div>
-        <div ng-show="$parent.User.Profile.payment == 'bank'" class="control-group">
+        <div ng-show="$parent.User.Profile.payment == 'bank' &amp;&amp; $parent.User.Profile.country == 'no'" class="control-group">
           <label class="control-label">Bank payment information</label>
           <div class="controls">
             <div>2095 27 123123</div>
             <div>Lillehammer elektroniske sportsklubb</div>
             <div>Riseenga 10</div>
             <div>2608 Lillehammer</div>
+          </div>
+        </div>
+      </form>
+      <!-- Step 5-->
+      <form ng-switch-when="5" name="form" ng-init="$parent.form = form" class="form-horizontal">
+        <div ng-class="{error: User.email == ''}" class="control-group">
+          <label for="payment" class="control-label">Email</label>
+          <div class="controls"><span class="input uneditable-input">{{ $parent.User.email }}</span><span ng-show="User.email == ''" class="help-inline">We require a valid email address</span></div>
+        </div>
+        <div class="control-group">
+          <label for="payment" class="control-label">Nationality</label>
+          <div class="controls"><span class="input uneditable-input">{{ getNationality() }}</span></div>
+        </div>
+        <div ng-class="{error: User.Profile.displayName == ''}" class="control-group">
+          <label for="payment" class="control-label">Display name</label>
+          <div class="controls"><span class="input uneditable-input">{{ $parent.User.Profile.displayName }}</span><span ng-show="User.Profile.displayName == ''" class="help-inline">You need to choose a display name</span></div>
+        </div>
+        <div ng-class="{error: User.Profile.firstName == ''}" class="control-group">
+          <label for="payment" class="control-label">First name</label>
+          <div class="controls"><span class="input uneditable-input">{{$parent.User.Profile.firstName }}</span><span ng-show="User.Profile.firstName == ''" class="help-inline">Please fill inn your first name</span></div>
+        </div>
+        <div ng-class="{error: User.Profile.lastName == ''}" class="control-group">
+          <label for="payment" class="control-label">Last name</label>
+          <div class="controls"><span class="input uneditable-input">{{ $parent.User.Profile.lastName }}</span><span ng-show="User.Profile.lastName == ''" class="help-inline">Please fill inn your last name</span></div>
+        </div>
+        <div ng-class="{error: User.Profile.dateOfBirth == ''}" class="control-group">
+          <label for="payment" class="control-label">Date of Birth / Age</label>
+          <div class="controls">
+            <div class="input-append"><span class="input uneditable-input">{{ $parent.User.Profile.dateOfBirth }}</span><span class="add-on">{{ User.Profile.dateOfBirth|age }} years old</span></div><span ng-show="User.Profile.dateOfBirth == ''" class="help-inline">We are required to record your date of birth for age verification</span>
+          </div>
+        </div>
+        <div ng-class="{error: User.acceptedPolicy != true}" class="control-group">
+          <label for="payment" class="control-label">Policy</label>
+          <div class="controls"><i ng-class="{true: 'icon-ok text-success', false: 'icon-remove text-error'}[User.acceptedPolicy]"></i><span ng-show="User.acceptedPolicy == true" class="help-inline">I accept the policy</span><span ng-show="User.acceptedPolicy != true" class="help-inline">I do not accept the policy</span>
+            <div><em ng-show="User.acceptedPolicy != true" class="help-block">In order to become a member you have to accept to the policy</em></div>
+          </div>
+        </div>
+        <div ng-class="{error: User.Profile.address == ''}" class="control-group">
+          <label for="payment" class="control-label">Address</label>
+          <div class="controls"><span class="input uneditable-input">{{ $parent.User.Profile.address }}</span><span ng-show="User.Profile.address != ''" class="help-inline">Please input your address</span></div>
+        </div>
+        <div ng-show="User.Profile.alternativeAddress == ''" class="control-group">
+          <label for="payment" class="control-label">Address 2</label>
+          <div class="controls"><span class="input uneditable-input">{{ $parent.User.Profile.alternativeAddress }}</span></div>
+        </div>
+        <div ng-class="{error: User.Profile.postcode == ''}" class="control-group">
+          <label for="payment" class="control-label">Postcode</label>
+          <div class="controls"><span class="input uneditable-input">{{ $parent.User.Profile.postcode }}</span><span ng-show="User.Profile.postcode == ''" class="help-inline">Please input your postcode</span></div>
+        </div>
+        <div ng-class="{error: User.Profile.postplace == ''}" class="control-group">
+          <label for="payment" class="control-label">Postplace</label>
+          <div class="controls"><span class="input uneditable-input">{{ $parent.User.Profile.postplace }}</span><span ng-show="User.Profile.postplace == ''" class="help-inline">Please input your postplace</span></div>
+        </div>
+        <div class="control-group">
+          <label for="payment" class="control-label">Payment</label>
+          <div class="controls">{{ User.Profile.payment }}
+            <div>{{ Payment.amount }}</div>
+            <div>{{ Payment.fee }}</div>
+            <div>{{ Payment.taxes }}</div>
           </div>
         </div>
       </form>

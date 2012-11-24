@@ -74,6 +74,7 @@ exports.createServer = function () {
   //    **NEED MORE HERE!!!**
   //
   args.forEach(function (arg) {
+    arg = Number(arg) || arg;
     switch (typeof arg) {
       case 'string':   host = arg; break;
       case 'number':   port = arg; break;
@@ -352,6 +353,9 @@ exports._getAgent = function _getAgent (options) {
   var Agent = options.https ? https.Agent : http.Agent,
       agent;
 
+  // require('http-proxy').setMaxSockets() should override http's default
+  // configuration value (which is pretty low).
+  options.maxSockets = options.maxSockets || maxSockets;
   agent = new Agent(options);
 
   return agent;

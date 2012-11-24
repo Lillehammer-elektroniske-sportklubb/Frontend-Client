@@ -1,0 +1,62 @@
+
+<div ng-controller="NewsAdminCtrl" class="row">
+  <form class="span8">
+    <div class="row">
+      <div class="span8">
+        <div class="pull-left">
+          <div class="control-group input-prepend"><span class="add-on">Author</span>
+            <input type="text" ng-model="editNews.author" class="input-xlarge"/>
+          </div>
+          <div class="control-group input-prepend"><span class="add-on">Title</span>
+            <input type="text" ng-model="editNews.title" class="input-xlarge"/>
+          </div>
+          <div class="inline-inputs"><span class="add-on">Publish on</span>
+            <input type="date" ng-model="editNews.publishDate"/> :
+            <input type="text" ng-model="editNews.publishTime" placeholder="Time XX:XX" class="input-small"/>
+          </div>
+        </div>
+        <div class="pull-right">
+          <div class="control-group">
+            <div style="width: 200px">
+              <button type="button" disabled="true" ng-class="{draft: 'btn-warning', published: 'btn-success', deleted: 'btn-danger'}[editNews.status]" class="disabled btn btn-block">Status: {{ editNews.status }}</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="control-group">
+            <div class="controls">
+              <textarea style="width:100%" rows="15" ng-model="editNews.body" placeholder="Body text"></textarea>
+            </div>
+          </div>
+          <div class="control-group"><span data-toggle="buttons-radio" class="btn-group">
+              <button type="button" ng-click="editNews.status = 'draft'" ng-class="{'active': editNews.status == 'draft'}" class="btn btn-warning">Draft</button>
+              <button type="button" ng-click="editNews.status = 'published'" ng-class="{'active': editNews.status == 'published'}" class="btn btn-success">Published</button>
+              <button type="button" ng-click="editNews.status = 'deleted'" ng-class="{'active': editNews.status == 'deleted'}" class="btn btn-danger">Deleted</button></span>
+            <button type="submit" ng-class="{'add': 'btn-success', 'edit': 'btn-warning'}[submitText.toLowerCase()]" ng-click="{'add': save(), 'edit': update()}[submitText.toLowerCase()]" class="btn btn-primary pull-right">{{ submitText }} newspost</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <table ng-init="getNews()" class="span4 table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Posted titles</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="item in newsList" ng-class="{'draft': 'warning', 'published': 'success', 'deleted': 'error'}[item.status]" ng-click="select($index)">
+      <td>{{ item.title }}</td>
+      <td>{{ item.author }}</td>
+    </tr>
+  </table>
+  <div class="span8">
+    <div class="row">
+      <div class="hero-unit span7"><a class="thumbnail"><img src="http://placehold.it/700x200"/></a>
+        <h1>{{ editNews.title }}</h1>
+        <div ng-bind-html-unsafe="editNews.body"></div>
+        <p><a ng-href="#/news/{{ item.id }}/{{ item.title }}" class="btn btn-primary">Learn more &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+</div>

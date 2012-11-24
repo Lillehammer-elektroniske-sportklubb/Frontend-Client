@@ -43,11 +43,104 @@ angular.module('Lions.controllers', [])
 
 .controller('MyCtrl2', [
   '$scope'
-
 ($scope) ->
   $scope
 ])
 
+.controller('StartpageCtrl',
+  ['$rootScope','$scope','$http'
+    (rootScope,scope,http) ->
+      scope.news =
+        [
+          {
+            'id': 2,
+            'title': 'Razer signs on with Lions',
+            'created': '2012-11-22 12:57:00',
+            'updated': '2012-11-22 13:00:00',
+            'body' : '<p>This is </p><!--readmore--><p> something more</p>'
+          }
+          {
+            'id': 3,
+            'title': 'QPAD signs on with Lions',
+            'created': '2012-11-22 11:57:00',
+            'updated': '2012-11-22 12:00:00',
+            'body' : '<p>This is </p><!--readmore--><p> something more</p>'
+          }
+          {
+            'id': 1,
+            'title': 'QPAD signs on with Lions',
+            'created': '2012-11-22 11:57:00',
+            'updated': '2012-11-22 12:00:00',
+            'body' : '<p>This is </p><!--readmore--><p> something more</p>'
+          }
+          {
+            'id': 4,
+            'title': 'QPAD signs on with Lions',
+            'created': '2012-11-22 11:57:00',
+            'updated': '2012-11-22 12:00:00',
+            'body' : '<p>This is </p><!--readmore--><p> something more</p>'
+          }
+          {
+            'id': 5,
+            'title': 'QPAD signs on with Lions',
+            'created': '2012-11-22 11:57:00',
+            'updated': '2012-11-22 12:00:00',
+            'body' : '<p>This is </p><!--readmore--><p> something more</p>'
+          }
+        ]
+      scope.getMainNews = () ->
+        return scope.news[0]
+      scope.getNews = () ->
+        return scope.news.slice(1)
+      scope.currentPage = 0
+      scope.pageSize = 3
+  ])
+
+.controller('NewsAdminCtrl', [
+  '$rootScope','$scope','news', 'iframePost'
+  (rootScope,scope, news, iframePost) ->
+    scope.newsList = []
+    scope.submitText = 'Add'
+    scope.newsListIndexEditing = false
+    scope.editNews = {
+      title: '',
+      body: '',
+      status: 'draft',
+      publishDate: Date.now()
+    }
+
+    scope.select = (index) ->
+      scope.newsListIndexEditing = index
+      scope.editNews = scope.newsList[scope.newsListIndexEditing]
+      scope.submitText = 'Edit'
+
+
+
+    scope.save = ->
+      if(scope.submitText.toLowerCase() == 'add')
+        addNews = new news()
+        addNews = scope.editNews
+        response = news.save({action: 'add'}, {NewsPost: addNews} )
+        console.log('send broadcast')
+        # rootScope.$broadcast('postMessage', {package:addNews, action: 'add'})
+        scope.newsList.push(response)
+
+      else
+        addNews = new news()
+        addNews = scope.editNews
+        scope.newsList[scope.newsListIndexEditing] = addNews
+        news.save({action: 'update'}, {NewsPost: addNews} )
+
+
+
+    scope.getNews = () ->
+      scope.newsList = news.query({action: 'get'})
+      return scope.newsList
+
+
+
+
+])
 # Handles the register modal
 .controller('RegisterWizardCtrl', [
   '$rootScope','$scope','RegisterWizard','$http'
@@ -68,35 +161,47 @@ angular.module('Lions.controllers', [])
         'alternativeAddress'  : '',
         'postcode'            : '',
         'postplace'           : '',
-        'payment'             : '',
+        'payment'             : 'none',
         'mobile'              : 'Mobile phonenumber',
       }
     }
-    scope.patterns = (pattern) ->
-      if(pattern == 'sms')
-        if(scope.User.Profile.payment == 'sms')
-          return /^4|9([0-9]){7}$/
+    scope.pattern = /^\s$/
+    scope.patterns = () ->
+      if(scope.User.Profile.payment == 'sms')
+        scope.$parent.pattern = /^4|9([0-9]){7}$/
+        scope.pattern = scope.$parent.pattern
+      else
+        scope.$parent.pattern = /^$/
+        scope.pattern = scope.$parent.pattern
+        if(scope.form.$error.pattern != false)
+          scope.form.$error.pattern[0].$setValidity('pattern',true)
 
-      return /^\s$/
     scope.smspattern = ->
-      return scope
+      return scope.pattern
     scope.nextstep = ->
       scope.step = scope.step + 1
-    scope.steps = new Array()
-    scope.User
+    scope.steps = []
+    scope.getNationality = () ->
+      switch(scope.User.Profile.country)
+        when "no" then return "Norwegian"
+        when "se" then return "Swedish"
+        else return "International"
+
 
     scope.validateForm = (index) ->
-
-      console.log(index)
-      if(scope.step == index)
-        scope.steps[index] = scope.form
-        return 'current'
-      else if((scope.steps[index] != undefined && !scope.steps[index].$invalid))
-        return 'validated'
-      else if(
-        scope.step >= index ||
-        (scope.steps[index] != undefined  && scope.steps[index].$invalid))
-        return 'error'
+      if(index != undefined)
+        if(scope.step == index)
+          scope.steps[index] = scope.form
+          console.log(scope.steps)
+          return 'current'
+        else if(
+          (scope.steps[index] != undefined && !scope.steps[index].$invalid)
+        )
+          return 'validated'
+        else if(
+          scope.step >= index ||
+          (scope.steps[index] != undefined  && scope.steps[index].$invalid))
+          return 'error'
 
 
 ])
@@ -126,7 +231,6 @@ angular.module('Lions.controllers', [])
   '$rootScope','$scope','Modal','RegisterWizard'
   (rootScope, scope, Modal,RegisterWizard) ->
     rootScope.$on('modal',(e,data) ->
-      console.log(data)
       scope.body = data
      #scope.$apply()
     )

@@ -81,9 +81,9 @@ div(ng-controller="RegisterWizardCtrl")
                                 input(name="lastName", type="text", ng-model="$parent.User.Profile.lastName")
                                 span
                                     small.help-inline Your last name.
-                            label.control-label(for="ssnumber") Social security number
-                            div.controls
-                                input(name="ssnumber", ng-model="$parent.ssnumber", type="text", ng-model="$parent.User.Profile.ssnumber", required="true", ng-pattern="/^([0-9]+){4}([0-9]+){2}([0-9]+){2}([0-9]+){4}$/")
+                            label.control-label(for="ssnumber", ng-show="$parent.User.Profile.country == 'se'") Social security number
+                            div.controls(ng-show="$parent.User.Profile.country == 'se'")
+                                input(name="ssnumber", ng-model="$parent.ssnumber", type="text", ng-model="$parent.User.Profile.ssnumber", required="{true: $parent.User.Profile.country == 'se'}", ng-pattern="/^([0-9]+){4}([0-9]+){2}([0-9]+){2}([0-9]+){4}$/")
                                 span
                                     small.help-inline Enter your social security number format YYYYMMDDXXXX.
                             label.control-label(for="birthday") Date of birth
@@ -101,9 +101,9 @@ div(ng-controller="RegisterWizardCtrl")
                                 input(name="addressTwo", type="text", ng-model="$parent.User.Profile.alternativeAddress")
                                 span
                                     small.help-inline If needed, a second address line!
-                            label.control-label(for="postcode", ng-model="$parent.User.Profile.postcode") Postcode
+                            label.control-label(for="postcode") Postcode
                             div.controls
-                                input(name="postcode", type="text")
+                                input(name="postcode", type="text", ng-model="$parent.User.Profile.postcode")
                             label.control-label(for="postplace") Postplace
                             div.controls
                                 input(name="postplace", type="text", ng-model="$parent.User.Profile.postplace")
@@ -112,23 +112,94 @@ div(ng-controller="RegisterWizardCtrl")
                 div.control-group
                     label.control-label(for="payment") Choose a payment option
                     div.controls.inline
-                        label.radio(ng-switch="$parent.User.Profile.payment")
-                            input(type="radio", ng-model="$parent.User.Profile.payment", value="sms", required="true", ng-change="pattern = patterns($parent.User.Profile.payment)")
+                        label.radio(ng-switch="$parent.User.Profile.payment", ng-show="User.Profile.country == 'no'")
+                            input(type="radio", ng-model="$parent.User.Profile.payment", value="sms", required="true", ng-change="patterns()")
                             i.icon-phone
                             | SMS-Payment
 
-                            input(type="text", ng-switch-when="sms", ng-model="$parent.User.Profile.mobile", ng-pattern="pattern", placeholder="phonenumber")
-                        label.radio
-                            input(type="radio", ng-model="$parent.User.Profile.payment", value="bank", ng-change="pattern = patterns($parent.User.Profile.payment); form.$validate()")
+                            input(type="text", ng-switch-when="sms", ng-model="$parent.User.Profile.mobile", ng-pattern="smspattern()", placeholder="phonenumber")
+
+                        label.radio(ng-show="User.Profile.country == 'no'")
+                            input(type="radio", ng-model="$parent.User.Profile.payment", value="bank", ng-change="patterns()", checked=true)
                             i.icon-money
                             | Bank transfer
-                div.control-group(ng-show="$parent.User.Profile.payment == 'bank'")
+
+                        p(ng-show="User.Profile.country != 'no'") We have currently not opted for any membership fee or packages outside of Norway.
+                div.control-group(ng-show="$parent.User.Profile.payment == 'bank' && $parent.User.Profile.country == 'no'")
                     label.control-label Bank payment information
                     div.controls
                         div 2095 27 123123
                         div Lillehammer elektroniske sportsklubb
                         div Riseenga 10
                         div 2608 Lillehammer
+            // Step 5
+            form.form-horizontal(ng-switch-when="5", name="form", ng-init="$parent.form = form")
+                div.control-group(ng-class="{error: User.email == ''}")
+                    label.control-label(for="payment") Email
+                    div.controls
+                        span.input.uneditable-input {{ $parent.User.email }}
+                        span.help-inline(ng-show="User.email == ''") We require a valid email address
+                div.control-group
+                    label.control-label(for="payment") Nationality
+                    div.controls
+                        span.input.uneditable-input {{ getNationality() }}
+                div.control-group(ng-class="{error: User.Profile.displayName == ''}")
+                    label.control-label(for="payment") Display name
+                    div.controls
+                        span.input.uneditable-input {{ $parent.User.Profile.displayName }}
+                        span.help-inline(ng-show="User.Profile.displayName == ''") You need to choose a display name
+                div.control-group(ng-class="{error: User.Profile.firstName == ''}")
+                    label.control-label(for="payment") First name
+                    div.controls
+                        span.input.uneditable-input {{$parent.User.Profile.firstName }}
+                        span.help-inline(ng-show="User.Profile.firstName == ''") Please fill inn your first name
+                div.control-group(ng-class="{error: User.Profile.lastName == ''}")
+                    label.control-label(for="payment") Last name
+                    div.controls
+                        span.input.uneditable-input {{ $parent.User.Profile.lastName }}
+                        span.help-inline(ng-show="User.Profile.lastName == ''") Please fill inn your last name
+                div.control-group(ng-class="{error: User.Profile.dateOfBirth == ''}")
+                    label.control-label(for="payment") Date of Birth / Age
+                    div.controls
+                        div.input-append
+                            span.input.uneditable-input {{ $parent.User.Profile.dateOfBirth }}
+                            span.add-on {{ User.Profile.dateOfBirth|age }} years old
+                        span.help-inline(ng-show="User.Profile.dateOfBirth == ''") We are required to record your date of birth for age verification
+                div.control-group(ng-class="{error: User.acceptedPolicy != true}")
+                    label.control-label(for="payment") Policy
+                    div.controls
+                        i(ng-class="{true: 'icon-ok text-success', false: 'icon-remove text-error'}[User.acceptedPolicy]")
+                        span.help-inline(ng-show="User.acceptedPolicy == true") I accept the policy
+                        span.help-inline(ng-show="User.acceptedPolicy != true") I do not accept the policy
+                        div
+                            em.help-block(ng-show="User.acceptedPolicy != true") In order to become a member you have to accept to the policy
+                div.control-group(ng-class="{error: User.Profile.address == ''}")
+                    label.control-label(for="payment") Address
+                    div.controls
+                        span.input.uneditable-input {{ $parent.User.Profile.address }}
+                        span.help-inline(ng-show="User.Profile.address != ''") Please input your address
+                div.control-group(ng-show="User.Profile.alternativeAddress == ''")
+                    label.control-label(for="payment") Address 2
+                    div.controls
+                        span.input.uneditable-input {{ $parent.User.Profile.alternativeAddress }}
+                div.control-group(ng-class="{error: User.Profile.postcode == ''}")
+                    label.control-label(for="payment") Postcode
+                    div.controls
+                        span.input.uneditable-input {{ $parent.User.Profile.postcode }}
+                        span.help-inline(ng-show="User.Profile.postcode == ''") Please input your postcode
+                div.control-group(ng-class="{error: User.Profile.postplace == ''}")
+                    label.control-label(for="payment") Postplace
+                    div.controls
+                        span.input.uneditable-input {{ $parent.User.Profile.postplace }}
+                        span.help-inline(ng-show="User.Profile.postplace == ''") Please input your postplace
+                div.control-group
+                    label.control-label(for="payment") Payment
+                    div.controls
+                        {{ User.Profile.payment }}
+                        div {{ Payment.amount }}
+                        div {{ Payment.fee }}
+                        div {{ Payment.taxes }}
+
     div.modal-footer
       button.btn(data-dismiss="modal", aria-hidden="true") Cancel registration
       button.btn.btn-primary(ng-click="nextstep()") Next step

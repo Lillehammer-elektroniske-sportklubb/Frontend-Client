@@ -1,8 +1,25 @@
 
-<div class="container">
-  <div class="hero-unit span8"><a class="thumbnail"><img src="http://placehold.it/700x200"/></a>
-    <h1>Razer signs on with Lions</h1>
-    <p> This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<div ng-controller="StartpageCtrl" class="container">
+  <div class="span-8">
+    <div ng-init="item = getMainNews()" class="row">
+      <div class="hero-unit span8"><a class="thumbnail"><img src="http://placehold.it/700x200"/></a>
+        <h1>{{ item.title }}</h1>
+        <div ng-bind-html-unsafe="item.body"></div>
+        <p><a ng-href="#/news/{{ item.id }}/{{ item.title | urlify }}" class="btn btn-primary">Learn more &raquo;</a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div ng-repeat="item in getNews() | paginate: currentPage*pageSize | limitTo: pageSize" class="span3">
+        <h4>{{ item.title }}</h4>
+        <div ng-bind-html-unsafe="item.body"></div>
+        <p><a ng-href="#/news/{{ item.id }}/{{ item.title | urlify }}" class="btn">Learn more &raquo;</a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span8">
+        <button ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1" class="btn">Previous</button>
+        <button ng-disabled="currentPage &gt;= getNews().length/pageSize - 1" ng-click="currentPage = currentPage + 1" class="btn">Next</button>
+      </div>
+    </div>
   </div>
 </div>

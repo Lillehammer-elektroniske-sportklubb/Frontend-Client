@@ -18,6 +18,7 @@ exports.config =
           'vendor/scripts/angular/angular.js'
           'vendor/scripts/angular/angular-resource.js'
           'vendor/scripts/angular/angular-cookies.js'
+          'vendor/scripts/postmessage/jquery.ba-postmessage.js'
 
           'vendor/scripts/bootstrap/bootstrap-transition.js'
           'vendor/scripts/bootstrap/bootstrap-alert.js'

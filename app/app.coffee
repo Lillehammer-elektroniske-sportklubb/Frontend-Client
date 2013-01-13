@@ -8,24 +8,28 @@ App = angular.module('Lions', [
   'Lions.filters'
   'Lions.services'
   'Lions.controllers'
+  'auth-interceptor'
+
 ])
 
 App.config([
   '$routeProvider'
   '$locationProvider'
 
-($routeProvider, $locationProvider, config) ->
+  ($routeProvider, $locationProvider, config) ->
 
-  $routeProvider
+    $routeProvider
 
-    .when('/start', {templateUrl: '/partials/startpage.html'})
-    .when('/community', {templateUrl: '/partials/partial1.html'})
-    .when('/contact', {templateUrl: '/partials/todo.html'})
-    .when('/lekadmin/news', {templateUrl: '/partials/admin/news/add.html'})
+      .when('/start', {templateUrl: '/partials/startpage.html'})
+      .when('/community', {templateUrl: '/partials/partial1.html'})
+      .when('/contact', {templateUrl: '/partials/todo.html'})
+      .when('/lekadmin/news', {templateUrl: '/partials/admin/news/add.html'})
 
-    # Catch all
-    .otherwise({redirectTo: '/start'})
+      # Catch all
+      .otherwise({redirectTo: '/start'})
 
-  # Without server side support html5 must be disabled.
-  $locationProvider.html5Mode(false)
+    # Without server side support html5 must be disabled.
+    $locationProvider.html5Mode(true)
+
 ])
+

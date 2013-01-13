@@ -1,0 +1,3 @@
+service.factory 'version', -> "0.0.1"
+
+

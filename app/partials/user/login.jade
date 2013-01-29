@@ -1,0 +1,29 @@
+form.form-horizontal(ng-controller="AuthenticationCtrl")
+    fieldset
+        legend.text-error Authentication required
+        div.row
+            div.span8
+                p.text-warning We need to confirm you have access to this part of the site, please sign in.
+                div.control-group
+                    label.control-label Email
+                    div.controls
+                        input(type="email",placeholder="Email", ng-model="user.email")
+                div.control-group
+                    label.control-label Password
+                    div.controls
+                        input(type="password",placeholder="Password", ng-model="user.password")
+                div.control-group
+                    div.controls
+                        label.checkbox
+                            input(type="checkbox")
+                            | Remember me
+                        button.btn.btn-primary(type="submit", ng-click="submit()")
+                            | Sign in
+                div.control-group
+                    div.controls
+                        button.btn.btn-small.btn-success(type="submit", ng-click="$location.path('/user/register')")
+                            | Register a new account
+                        button.btn.btn-small.btn-inverse(type="submit")
+                            | Recover lost password
+            div.span4
+

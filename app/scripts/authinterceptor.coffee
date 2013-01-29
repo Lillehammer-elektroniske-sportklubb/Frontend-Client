@@ -9,10 +9,10 @@ angular.module('auth-interceptor', [])
     })
 
   this.$get = ['$rootScope', '$injector', ($rootScope, $injector) ->
-    $http
+    #$http
 
     retry = (config, deferred) ->
-      $http = $http || $injector.get('$http')
+      $http = $injector.get('$http')
       $http(config).then((response) ->
         deferred.resolve(response)
       )
@@ -41,7 +41,6 @@ angular.module('auth-interceptor', [])
           if(response.status == 401)
             deferred = $q.defer()
             authServiceProvider.pushToBuffer(response.config, deferred)
-            console.log('401')
             console.log(response.status)
             $rootScope.$broadcast('event:auth:loginRequired')
             return deferred.promise

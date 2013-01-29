@@ -27,7 +27,7 @@ controller.controller('LionsCtrl', [
       else
         return ''
 
-    $rootScope.$on('event:auth:logginRequired', () ->
-      console.log('not logged in')
+    $rootScope.$on('event:auth:loginRequired', (data) ->
+      $location.path('/user/login')
     )
 ])

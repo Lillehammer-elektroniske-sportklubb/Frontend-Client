@@ -1,6 +1,6 @@
 controller.controller('StartpageCtrl',
-['$rootScope','$scope','$http', '$resource'
-  (rootScope,scope,http,resource) ->
+['$rootScope','$scope', 'news'
+  (rootScope,scope,News) ->
     scope.news =
       [
         {
@@ -39,11 +39,9 @@ controller.controller('StartpageCtrl',
         'body' : '<p>This is </p><!--readmore--><p> something more</p>'
         }
       ]
-    newsR = resource('http://localhost:port/:action',
-      {port: ':9000'}, {'query': {}})
-    news = newsR.query(() ->
-      scope.news = news
-    )
+
+
+    news = News.query()
     scope.getMainNews = () ->
       return scope.news[0]
     scope.getNews = () ->

@@ -1,23 +1,24 @@
 div(ng-controller="RegisterWizardCtrl")
-    div.modal-header
-      button.close(data-dismiss="modal", aria-hidden="true", ng-init="registerStep(2)") ×
-      div.wizard
+    div.wizard
         a(ng-class="validateForm(1)", ng-click="step = 1")
-          span.badge.badge-inverse 1
-          span Country
+            span.badge.badge-inverse 1
+            span  Select Country
         a(ng-class="validateForm(2)", ng-click="step = 2")
-          span.badge.badge-inverse 2
-          span Accept policy
+            span.badge.badge-inverse 2
+            span  Accept the usage policy
         a(ng-class="validateForm(3)", ng-click="step = 3")
-          span.badge.badge-inverse 3
-          span Profile information
+            span.badge.badge-inverse 3
+            span  Enter your profile information
         a(ng-class="validateForm(4)", ng-click="step = 4; pattern = patterns(User.Profile.payment)")
-          span.badge.badge-inverse 4
-          span Payment option
+            span.badge.badge-inverse 4
+            span  Payment option
         a(ng-class="{current: step == 5}", ng-click="step = 5")
-          span.badge.badge-inverse 5
-          span Overview
-    div.modal-body
+            span.badge.badge-inverse 5
+            span  Review your profile
+        a(ng-class="{current: step == 6}", ng-click="step = 6")
+            span.badge.badge-inverse 6
+            span  Welcome!
+
         div(ng-switch="step")
             // Step 1 default
             form.form-horizontal(ng-switch-default, name="form", ng-init="$parent.form = form")
@@ -199,7 +200,5 @@ div(ng-controller="RegisterWizardCtrl")
                         div {{ Payment.amount }}
                         div {{ Payment.fee }}
                         div {{ Payment.taxes }}
-
-    div.modal-footer
-      button.btn(data-dismiss="modal", aria-hidden="true") Cancel registration
-      button.btn.btn-primary(ng-click="nextstep()") Next step
+        button.btn(data-dismiss="modal", aria-hidden="true") Cancel registration
+        button.btn.btn-primary(ng-click="nextstep()") Next step

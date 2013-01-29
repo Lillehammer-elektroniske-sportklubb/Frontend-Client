@@ -1,12 +1,13 @@
-service.factory('news', ['$resource',
-  ($resource) ->
-    return $resource(
-      'http://backend.eu.lionsek.com/:action'
-      # 'http://localhost:port/:action'
+service.factory('news', ['$resource', 'TokenHandler',
+  ($resource, tokenHandler) ->
+    resource = $resource(
+      #'http://backend.eu.lionsek.com/:action'
+       'http://localhost:port/:action'
     ,
-      {callback: 'JSON_CALLBACK'},
-      {
-      query: {method:'JSONP', isArray: true}
-      })
+      {port: ':9000'}
+    )
+
+    return tokenHandler.wrapActions(resource)
+
 ])
 

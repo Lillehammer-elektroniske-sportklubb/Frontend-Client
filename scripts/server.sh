@@ -1,4 +1,5 @@
 #!/bin/bash
 
 rm -rf _public
-brunch watch --server
+brunch watch -s
+

@@ -1,8 +1,10 @@
 ul.nav
+  li(ng-class="getclass('Home')")
+    a(ng-href="/home")
+        i.icon-white.icon-home
   li.dropdown(ng-class="getClass('/home')")
     a.dropdown-toggle(data-toggle="dropdown",ng-href='#/home', data-target="#")
-      i.icon-white.icon-info-sign
-      span Information
+      span Remy
       b.caret
     ul.dropdown-menu
       li

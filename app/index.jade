@@ -24,11 +24,7 @@ html(lang='en')
   body(ng-controller='BracketCtrl')
     .wrapper
       .navbar.navbar-fixed-top
-        .container.logo
-          a(ng-href="/start", title="Go to startpage")
-            img(src="img/logo.png")
         .navbar-inner
-          .container
             button.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
               span.icon-bar
               span.icon-bar
@@ -39,7 +35,6 @@ html(lang='en')
       .container.main-content
         div(ng-view)
       .push
-    div#modal.modal.hide.fade(ng-controller="ModalCtrl",ng-include="body",tabindex="-1",role="dialog")
     footer.footer
       .container
         p

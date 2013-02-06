@@ -1,3 +1,3 @@
 
 angular.element(document).ready ->
-  angular.bootstrap(document, ['Lions'])
+  angular.bootstrap(document, ['Bracket'])

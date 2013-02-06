@@ -1,13 +1,13 @@
 'use strict'
 
 # Declare app level module which depends on filters, and services
-App = angular.module('Lions', [
+App = angular.module('Bracket', [
   'ngCookies'
   'ngResource'
-  'Lions.directives'
-  'Lions.filters'
-  'Lions.services'
-  'Lions.controllers'
+  'Bracket.directives'
+  'Bracket.filters'
+  'Bracket.services'
+  'Bracket.controllers'
   'auth-interceptor'
 
 ])

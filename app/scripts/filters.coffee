@@ -2,4 +2,4 @@
 
 ### Filters ###
 
-filter = angular.module('Lions.filters', [])
+filter = angular.module('Bracket.filters', [])

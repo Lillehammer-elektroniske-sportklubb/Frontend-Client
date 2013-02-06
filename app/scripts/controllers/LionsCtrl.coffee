@@ -1,4 +1,4 @@
-controller.controller('LionsCtrl', [
+controller.controller('BracketCtrl', [
   '$scope'
   '$location'
   '$resource'

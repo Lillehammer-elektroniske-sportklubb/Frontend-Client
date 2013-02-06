@@ -1,7 +1,7 @@
 service.factory('news', ['$resource', 'TokenHandler',
   ($resource, tokenHandler) ->
     resource = $resource(
-      #'http://backend.eu.lionsek.com/:action'
+      #'http://backend.eu.Bracketek.com/:action'
        'http://localhost:port/:action'
     ,
       {port: ':9000'}

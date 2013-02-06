@@ -2,4 +2,4 @@
 
 ### Controllers ###
 
-controller = angular.module('Lions.controllers', [])
+controller = angular.module('Bracket.controllers', [])

@@ -3,7 +3,7 @@
 ### Directives ###
 
 # register the module with Angular
-directive = angular.module('Lions.directives', [
+directive = angular.module('Bracket.directives', [
   # require the 'app.service' module
-  'Lions.services'
+  'Bracket.services'
 ])

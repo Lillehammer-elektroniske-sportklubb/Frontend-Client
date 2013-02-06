@@ -2,4 +2,4 @@
 
 ### Sevices ###
 
-service = angular.module('Lions.services', ['ngResource'])
+service = angular.module('Bracket.services', ['ngResource'])

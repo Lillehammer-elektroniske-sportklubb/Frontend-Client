@@ -1,21 +1,7 @@
 div.container(ng-controller="StartpageCtrl")
-    div.span-8
-        div.row(ng-init="item = getMainNews()")
-            div.hero-unit.span8
-                a.thumbnail
-                  img(src="http://placehold.it/700x200")
-                h1 {{ item.title }}
-                div(ng-bind-html-unsafe="item.body")
-                p
-                   a.btn.btn-primary(ng-href="#/news/{{ item.id }}/{{ item.title | urlify }}") Learn more &raquo;
-        div.row
-            div.span3(ng-repeat="item in getNews() | paginate: currentPage*pageSize | limitTo: pageSize")
-                h4 {{ item.title }}
-                div(ng-bind-html-unsafe="item.body")
-                p
-                    a.btn(ng-href="#/news/{{ item.id }}/{{ item.title | urlify }}") Learn more &raquo;
-        div.row
-            div.span8
-                button.btn(ng-disabled="currentPage == 0", ng-click="currentPage = currentPage - 1") Previous
-                button.btn(ng-disabled="currentPage >= getNews().length/pageSize - 1", ng-click="currentPage = currentPage + 1") Next
+    div.row
+        div.span12
+            div.well
+                tada
+
 

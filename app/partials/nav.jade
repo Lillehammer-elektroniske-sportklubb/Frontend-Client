@@ -1,116 +1,70 @@
 ul.nav
-  li(ng-class="getclass('Home')")
-    a(ng-href="/home")
-        i.icon-white.icon-home
-  li.dropdown(ng-class="getClass('/home')")
-    a.dropdown-toggle(data-toggle="dropdown",ng-href='#/home', data-target="#")
-      span Remy
-      b.caret
-    ul.dropdown-menu
-      li
-        a(ng-href='#/about')
-          i.icon-chevron-right
-          span About Lions
-      li
-        a(ng-href='#/organisation')
-          i.icon-map-marker
-          span Organisation
-  li.dropdown(ng-class="getClass('/community')")
-    a.dropdown-toggle(data-toggle="dropdown",ng-href='#/community', data-target="#")
-      i.icon-white.icon-th-list
-      span Community
-      b.caret
-    ul.dropdown-menu
-      li
-        a(ng-href='#/forums')
-          i.icon-th-list
-          span Forums
-      //-
-          li
-            a(ng-href='#/media')
-              i.icon-picture
-              span Media
-      li.dividier-vertical
-  li.dropdown(ng-class="getClass('/teams')")
-    a.dropdown-toggle(data-toggle="dropdown",ng-href='#/teams', data-target="#")
-      span Teams
-      b.caret
-    ul.dropdown-menu.nav-list
-      li.nav-header PC Teams
-      li
-        a(ng-href='#/teams/pc/csgom')
-          i.icon-chevron-right
-          span Counter-Strike: Global Offensive (M)
-      li.nav-header Console Teams
-      li
-        a(ng-href='#/teams/pc/codbo2')
-          i.icon-chevron-right
-          span Call of Duty: Black Ops II (M)
-  //-
-      li.dropdown(ng-class="getClass('/tournaments')")
-          a.dropdown-toggle(data-toggle="dropdown",ng-href='#/tournaments', data-target="#")
-            span Tournaments
+    li(ng-class="getclass('Start')")
+        a(ng-href="/start")
+            i.icon-white.icon-home
+    li.dropdown(ng-class="getClass('/user')")
+        a.dropdown-toggle(data-toggle="dropdown",ng-href='/user', data-target="#")
+            span Remy
             b.caret
-          ul.dropdown-menu.nav-list
-            li.nav-header Leagues
+        ul.dropdown-menu
             li
-              a(ng-href='#/tournaments/leagues/pc/csgom2013')
-                i.icon-chevron-right
-                span (pc) Counter-Strike: Global Offensive 2013 (M)
-            li.nav-header CUPs
+                a(ng-href='/user/dashboard')
+                    i.icon-white.icon-desktop
+                    span  Dashboard
+            li.divider
             li
-              a(ng-href='#/tournaments/cups/pc/tnccsgo1')
-                i.icon-chevron-right
-                span (pc) The Nordic Cooperation CS:GO #1
-            li.nav-header Frag Festivals
+                a(ng-href='/user/profile')
+                    i.icon-white.icon-user
+                    span  Profile
             li
-              a(ng-href='#/tournaments/festivals/pc/fridaynight')
-                i.icon-chevron-right
-                span (pc) Friday-Night!-->
+                a(ng-href='/user/games')
+                    i.icon-white.icon-comments
+                    span  Messages
+            li
+                a(ng-href='/user/calendar')
+                    i.icon-white.icon-calendar
+                    span  Calendar
+            li.divider
+            li
+                a(ng-href='/user/games')
+                    i.icon-white.icon-wrench
+                    span  Preferences
+            li
+                a(ng-href='/user/games')
+                    i.icon-white.icon-key
+                    span  Games
+            li.divider
+            li
+                a(ng-href='/user/games')
+                    i.icon-white.icon-signout
+                    span  Logout
 
-  //-
-      li.dropdown(ng-class="getClass('/gathers')")
-        a.dropdown-toggle(data-toggle="dropdown",ng-href='#/gathers', data-target="#")
-          span Gathers
-          b.caret
-        ul.dropdown-menu.nav-list
-          li.nav-header PC
-          li
-            a(ng-href='#/gathers/pc/csgo')
-              i.icon-chevron-right
-              span Counter-Strike: Global Offensive
-          li.nav-header XBOX 360
-          li
-            a(ng-href='#/tournaments/cups/pc/tnccsgo1')
-              i.icon-chevron-right
-              span Call of Duty: Black Ops II
-          li.nav-header Playstation 3
-          li
-            a(ng-href='#/tournaments/cups/pc/tnccsgo1')
-              i.icon-chevron-right
-              span Call of Duty: Black Ops II
-  li(ng-class="getClass('/contact')")
-    a(ng-href="#/contact") Contact
+    li.dropdown(ng-class="getClass('/play')")
+        a.dropdown-toggle(data-toggle="dropdown",ng-href='/play', data-target="#")
+            span Play &nbsp;
+                span.badge 1
+            b.caret
+        ul.dropdown-menu
+            li
+               a test
+    li.dropdown(ng-class="getClass('/create')")
+        a.dropdown-toggle(data-toggle="dropdown",ng-href='/create', data-target="#")
+            span Create
+            b.caret
+        ul.dropdown-menu
+            li
+                a New tournament
+
+form.navbar-search.pull-right
+    input.search-query(type="text", placeholder="Search")
 
 ul.nav.pull-right
-  li.dropdown
-  div.btn-group
-    a.btn.btn-primary(href="#")
-      i.icon-user.icon-white
-      span Log in
-    a.btn.btn-primary.dropdown-toggle(data-toggle="dropdown",data-target="#",href="#")
-      span.caret
-    ul.dropdown-menu
-      li
-        a(ng-controller="RegisterCtrl", ng-click="start()")
-          i.icon-pencil
-          span Register new account
-        a(href="#")
-          i.icon-envelope
-          span Recover lost password
-//-
-    form.navbar-search.pull-right
-      input.search-query(type="text", placeholder="Search")
-
-
-
+    li.divider-vertical
+    li.dropdown(ng-class="getClass('/help')")
+        a.dropdown-toggle(data-toggle="dropdown",ng-href='/help', data-target="#")
+            span Help
+            b.caret
+        ul.dropdown-menu
+            li
+                a New tournament
+    li.divider-vertical

@@ -1,33 +1,40 @@
 
 <ul class="nav">
-  <li ng-class="getclass('Home')"><a ng-href="/home"><i class="icon-white icon-home"></i></a></li>
-  <li ng-class="getClass('/home')" class="dropdown"><a data-toggle="dropdown" ng-href="#/home" data-target="#" class="dropdown-toggle"><span>Remy</span><b class="caret"></b></a>
+  <li ng-class="getclass('Start')"><a ng-href="/start"><i class="icon-white icon-home"></i></a></li>
+  <li ng-class="getClass('/user')" class="dropdown"><a data-toggle="dropdown" ng-href="/user" data-target="#" class="dropdown-toggle"><span>Remy</span><b class="caret"></b></a>
     <ul class="dropdown-menu">
-      <li><a ng-href="#/about"><i class="icon-chevron-right"></i><span>About Lions</span></a></li>
-      <li><a ng-href="#/organisation"><i class="icon-map-marker"></i><span>Organisation</span></a></li>
+      <li><a ng-href="/user/dashboard"><i class="icon-white icon-desktop"></i><span> Dashboard</span></a></li>
+      <li class="divider"></li>
+      <li><a ng-href="/user/profile"><i class="icon-white icon-user"></i><span> Profile</span></a></li>
+      <li><a ng-href="/user/games"><i class="icon-white icon-comments"></i><span> Messages</span></a></li>
+      <li><a ng-href="/user/calendar"><i class="icon-white icon-calendar"></i><span> Calendar</span></a></li>
+      <li class="divider"></li>
+      <li><a ng-href="/user/games"><i class="icon-white icon-wrench"></i><span> Preferences</span></a></li>
+      <li><a ng-href="/user/games"><i class="icon-white icon-key"></i><span> Games</span></a></li>
+      <li class="divider"></li>
+      <li><a ng-href="/user/games"><i class="icon-white icon-signout"></i><span> Logout</span></a></li>
     </ul>
   </li>
-  <li ng-class="getClass('/community')" class="dropdown"><a data-toggle="dropdown" ng-href="#/community" data-target="#" class="dropdown-toggle"><i class="icon-white icon-th-list"></i><span>Community</span><b class="caret"></b></a>
+  <li ng-class="getClass('/play')" class="dropdown"><a data-toggle="dropdown" ng-href="/play" data-target="#" class="dropdown-toggle"><span>Play &nbsp;<span class="badge">1</span></span><b class="caret"></b></a>
     <ul class="dropdown-menu">
-      <li><a ng-href="#/forums"><i class="icon-th-list"></i><span>Forums</span></a></li>
-      <li class="dividier-vertical"></li>
+      <li><a>test</a></li>
     </ul>
   </li>
-  <li ng-class="getClass('/teams')" class="dropdown"><a data-toggle="dropdown" ng-href="#/teams" data-target="#" class="dropdown-toggle"><span>Teams</span><b class="caret"></b></a>
-    <ul class="dropdown-menu nav-list">
-      <li class="nav-header">PC Teams</li>
-      <li><a ng-href="#/teams/pc/csgom"><i class="icon-chevron-right"></i><span>Counter-Strike: Global Offensive (M)</span></a></li>
-      <li class="nav-header">Console Teams</li>
-      <li><a ng-href="#/teams/pc/codbo2"><i class="icon-chevron-right"></i><span>Call of Duty: Black Ops II (M)</span></a></li>
+  <li ng-class="getClass('/create')" class="dropdown"><a data-toggle="dropdown" ng-href="/create" data-target="#" class="dropdown-toggle"><span>Create</span><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a>New tournament</a></li>
     </ul>
   </li>
-  <li ng-class="getClass('/contact')"><a ng-href="#/contact">Contact</a></li>
 </ul>
+<form class="navbar-search pull-right">
+  <input type="text" placeholder="Search" class="search-query"/>
+</form>
 <ul class="nav pull-right">
-  <li class="dropdown"></li>
-  <div class="btn-group"><a href="#" class="btn btn-primary"><i class="icon-user icon-white"></i><span>Log in</span></a><a data-toggle="dropdown" data-target="#" href="#" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
+  <li class="divider-vertical"></li>
+  <li ng-class="getClass('/help')" class="dropdown"><a data-toggle="dropdown" ng-href="/help" data-target="#" class="dropdown-toggle"><span>Help</span><b class="caret"></b></a>
     <ul class="dropdown-menu">
-      <li><a ng-controller="RegisterCtrl" ng-click="start()"><i class="icon-pencil"></i><span>Register new account</span></a><a href="#"><i class="icon-envelope"></i><span>Recover lost password</span></a></li>
+      <li><a>New tournament</a></li>
     </ul>
-  </div>
+  </li>
+  <li class="divider-vertical"></li>
 </ul>

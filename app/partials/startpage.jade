@@ -2,6 +2,15 @@ div.container(ng-controller="StartpageCtrl")
     div.row
         div.span12
             div.well
-                tada
+        div.span12
+            button.btn.btn-block.btn-info.btn-large
+                | Want to Play or Create a competition? Register your&nbsp;
 
-
+                u
+                    b FREE
+                |  account now
+    div.row
+        div.span12
+            div(ng-init="startpage.featured = '/partials/startpage/featured.html'",ng-include="startpage.featured")
+            div(ng-init="startpage.featured = '/partials/startpage/featured.html'",ng-include="startpage.featured")
+            div(ng-init="startpage.featured = '/partials/startpage/featured.html'",ng-include="startpage.featured")

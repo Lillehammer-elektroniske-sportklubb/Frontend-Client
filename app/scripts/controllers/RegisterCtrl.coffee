@@ -1,6 +1,13 @@
 controller.controller('RegisterCtrl', [
-  '$rootScope','$scope','RegisterWizard', '$http'
-  (rootScope, scope, RegisterWizard, http) ->
+  '$rootScope','$scope','RegisterWizard', '$http', 'news'
+  (rootScope, scope, RegisterWizard, http, news) ->
+
+
+    scope.submit = ->
+      news.tittel = scope.news.title
+      news.$query()
+
+
 
     scope.mydata
     scope.start = ->

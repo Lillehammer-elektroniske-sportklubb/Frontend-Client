@@ -40,7 +40,20 @@ controller.controller('StartpageCtrl',
         }
       ]
 
+    scope.competitions = [
+      {
+        game: 'csgo',
+        name: 'Lions Invitational',
+        venue: 'Online',
+        prizePool: 'Hardware',
+        players: 1,
+        slots: 16,
+        startTime: '1288323623006',
+        endSignupTime: '1288323623006'
 
+      }
+
+    ]
     news = News.query()
     scope.getMainNews = () ->
       return scope.news[0]

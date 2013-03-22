@@ -9,6 +9,9 @@ App = angular.module('Bracket', [
   'Bracket.services'
   'Bracket.controllers'
   'auth-interceptor'
+  'placeholders.img'
+  'placeholders.txt'
+  'ui.bootstrap'
 
 ])
 
@@ -16,25 +19,47 @@ App.config([
   '$routeProvider'
   '$locationProvider'
 
-  ($routeProvider, $locationProvider, config) ->
+  ($routeProvider, $locationProvider) ->
 
+    localization = 'no'
+    baseurl = '//cdn.bracket.no'
     $routeProvider
 
-      .when('/start', {templateUrl: '/partials/startpage.html'})
-      # User
-      .when('/user/login', {templateUrl: '/partials/user/login.html'})
-      .when('/user/register', {templateUrl: '/partials/user/register.html'})
-      .when('/user/recover', {templateUrl: '/partials/user/recover.html'})
-
-      .when('/community', {templateUrl: '/partials/partial1.html'})
-      .when('/contact', {templateUrl: '/partials/todo.html'})
-      .when('/lekadmin/news', {templateUrl: '/partials/admin/news/add.html'})
-
+      .when('/',
+        {
+        templateUrl: baseurl + '/partials/maintenance/login.html'
+        }
+      )
+      .when('/user/login',
+        {
+          templateUrl: baseurl + '/partials/en/user/login.html'
+        }
+      )
+      .when('/user/register',
+        {
+        templateUrl: baseurl + '/partials/en/user/register.html'
+        }
+      )
+      .when('/tournament/dashboard/:id',
+        {
+        templateUrl: baseurl + '/partials/en/tournament/view.html'
+        }
+      )
+      .when('/tournament/rules/:id',
+        {
+        templateUrl: baseurl + '/partials/en/tournament/rules.html'
+        }
+      )
+      .when('/tournament/contestants/:id',
+        {
+        templateUrl: baseurl + '/partials/en/tournament/contestants.html'
+        }
+      )
       # Catch all
-      .otherwise({redirectTo: '/start'})
+      .otherwise({redirectTo: '/'})
 
     # Without server side support html5 must be disabled.
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode(false)
 
 ])
 

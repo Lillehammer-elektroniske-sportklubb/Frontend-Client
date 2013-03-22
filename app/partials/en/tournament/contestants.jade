@@ -1,0 +1,26 @@
+//
+   Created with IntelliJ IDEA.
+   User: Christophe
+   Date: 18.03.13
+   Time: 21:41
+   To change this template use File | Settings | File Templates.
+
+div.container(ng-controller="TournamentCtrl")
+    div.row
+        div.span12(ng-include="'/partials/en/tournament/nav.html'")
+        div.span6
+            div(ng-repeat="contestant in tournament.signups")
+                div.span6
+                    div.row
+                        div.span3
+                            a(ng-click="contestant.collapsed = !contestant.collapsed") {{ contestant.name }}
+
+                        div.push3
+                            div(collapse="contestant.collapsed")
+                                div(ng-repeat="member in contestant.members")
+                                    span {{ member.name }}
+                            hr
+
+
+        div.span6(ng-include="'/partials/en/tournament/sidebar.html'")
+

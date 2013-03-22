@@ -34,14 +34,12 @@ angular.module('auth-interceptor', [])
     ($httpProvider, authServiceProvider) ->
       interceptor = ['$rootScope', '$q', ($rootScope, $q) ->
         success = (response) ->
-          console.log(response.status)
           return response
 
         error = (response) ->
           if(response.status == 401)
             deferred = $q.defer()
             authServiceProvider.pushToBuffer(response.config, deferred)
-            console.log(response.status)
             $rootScope.$broadcast('event:auth:loginRequired')
             return deferred.promise
 

@@ -1,0 +1,39 @@
+div.container(ng-controller="FrontpageCtrl")
+    div.row
+        div.span12
+            div.well
+        div.span12
+            button.btn.btn-block.btn-info.btn-large
+                | Want to Play or Create a competition? Register your&nbsp;
+
+                u
+                    b FREE
+                |  account now
+
+    div.row
+        div.span12
+            table.table.table-bordered.table-striped.table-hover.startpage
+                thead
+                    tr
+                        th
+                        th Componame
+                        th Venue
+                        th Prize pool
+                        th Players
+                        th Start time/date
+                        th Signups end
+                        th Current stage
+                tbody
+                    tr(ng-repeat="tournament in tournaments", ng-click="$location.path('/tournament/dashboard/' + tournament._id)")
+                            th {{ tournament.game }}
+                            th {{ tournament.title }}
+                            th {{ tournament.venue }}
+                            th {{ tournament.prizePool }}
+                            th {{ tournament.signups.length }} / {{ tournament.slots }}
+                            th {{ tournament.start | date:'medium' }}
+                            th {{ tournament.signupEnds | date:'medium' }}
+                            th {{ tournament.currentStage }}
+
+
+
+

@@ -1,0 +1,18 @@
+//
+   Created with IntelliJ IDEA.
+   User: Christophe
+   Date: 18.03.13
+   Time: 21:41
+   To change this template use File | Settings | File Templates.
+
+div.container(ng-controller="TournamentCtrl")
+    div.row
+        div.span12(ng-include="'/partials/en/tournament/nav.html'")
+        div.span6
+            div(ng-repeat="group in tournament.groups")
+                img.img-rounded(ph-img="570x200")
+                h2(ph-txt,num-sentences="1")
+                p(ph-txt, num-paragraphs="2")
+                hr
+        div.span6(ng-include="'/partials/en/tournament/sidebar.html'")
+

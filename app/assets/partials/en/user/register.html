@@ -1,0 +1,130 @@
+<!--
+<Created>with IntelliJ IDEA.</Created>
+<User>
+  <Christophe></Christophe>
+</User>
+<Date>
+  <18 class="03 13"></18>
+</Date>
+<Time>
+  <19:08></19:08>
+</Time>
+<To>change this template use File | Settings | File Templates.</To>-->
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h1>Register user account</h1>
+    </div>
+    <form name="registerForm" ng-controller="RegisterCtrl" ng-submit="login()" class="form-horizontal span12">
+      <legend>Account information</legend>
+      <div class="control-group">
+        <label class="control-label">Username (Email)</label>
+        <div class="controls">
+          <input type="email" ng-model="username" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Password</label>
+        <div class="controls">
+          <input type="password" ng-model="password" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Confirm password</label>
+        <div class="controls">
+          <input type="password" ng-model="confirmationPassword" required="required"/>
+        </div>
+      </div>
+      <legend>General information</legend>
+      <div class="control-group">
+        <label class="control-label">Firstname</label>
+        <div class="controls">
+          <input type="text" ng-model="firstname" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Surname</label>
+        <div class="controls">
+          <input type="text" ng-model="Surname" required="required"/>
+        </div>
+      </div>
+      <div ng-init="gender = 'm'" class="control-group">
+        <label class="control-label">Gender</label>
+        <div class="controls">
+          <select ng-model="gender" required="required">
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Mobilephone number</label>
+        <div class="controls">
+          <input type="text" ng-model="mobilenumber" required="required" ui-date="ui-date"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Date of birth</label>
+        <div class="controls">
+          <input type="text" ng-model="dateOfBirth" required="required" ui-date="ui-date"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Nationality</label>
+        <div class="controls">
+          <input type="text" ng-model="nationality" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Address</label>
+        <div class="controls">
+          <input type="text" ng-model="address" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Postcode</label>
+        <div class="controls">
+          <input type="text" ng-model="postcode" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Postplace</label>
+        <div class="controls">
+          <input type="text" ng-model="postplace" required="required"/>
+        </div>
+      </div>
+      <legend>Choose your games</legend>
+      <div class="row registerGames">
+        <div class="span6">
+          <input ng-model="searchAvailableGames" placeholder="Search in available game titles" type="search"/>
+          <div class="row">
+            <div class="span3">
+              <h4>Available game titles</h4>
+              <ul>
+                <li ng-repeat="game in gamesAvailableList | filter:searchAvailableGames"><a ng-click="selectGame(game)" class="text-success">{{ game.title }}<i class="icon icon-chevron-right"></i></a></li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h4>Selected game titles</h4>
+              <ul>
+                <li ng-repeat="game in gamesSelectedList"><a ng-click="deselectGame(game)" class="text-error"><i class="icon icon-chevron-left"></i> {{ game.title }}</a>
+                  <input ng-model="game.guid" type="text" placeholder="GUID"/>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="well">
+            <h4 class="text-info">Information!</h4>
+            <p>Use the arrows &nbsp;<a class="disabled text-success"><i class="icon icon-chevron-right"></i></a> and &nbsp;<a class="disabled text-error"><i class="icon icon-chevron-left"></i></a> to<span class="text-success"><b> add</b></span> and<span class="text-error"><b> remove</b></span> games from your list, this can be edited at anytime!</p>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <hr/>
+        <button type="submit" class="btn btn-success pull-right">Register your new account</button>
+      </div>
+    </form>
+  </div>
+</div>

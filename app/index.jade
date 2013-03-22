@@ -7,10 +7,10 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     title(ng-bind-template='{{pageTitle}}')
-    link(rel='stylesheet', href='/css/app.css')
-    //-script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+    link(rel='stylesheet', href='//cdn.bracket.no/css/app.css')
+    //-script(src='http:s//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
     //if lte IE 7
-      script(src='http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
     //if lte IE 8
       script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
     script
@@ -23,23 +23,12 @@ html(lang='en')
     script(src='/js/app.js')
   body(ng-controller='BracketCtrl')
     .wrapper
-      .navbar.navbar-fixed-top
-        .navbar-inner
-            button.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a(href='/').brand
-            .nav-collapse.collapse
-              div(ng-include="'/partials/nav.html'", )
-      .container.main-content
         div(ng-view)
       .push
     footer.footer
       .container
         p
           small
-            div www.bracket.no: v<span app-version></span>
+            div www.LionsEK.com: v<span app-version></span>
 
             div &copy; 2007-2012 Lions eSportsKlubb (996180247)
-    iframe#postMessageIframe(frameborder="0") &nbsp;

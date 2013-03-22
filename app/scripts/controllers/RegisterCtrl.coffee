@@ -1,30 +1,32 @@
 controller.controller('RegisterCtrl', [
-  '$rootScope','$scope','RegisterWizard', '$http', 'news'
-  (rootScope, scope, RegisterWizard, http, news) ->
+  '$rootScope', '$scope'
+  (rootScope, scope) ->
 
+    scope.gamesAvailableList = [
+      {
+        id: "dwdawdlad"
+        title: "Counter-Strike: Global Offensive"
+        guid: ""
+      }
+    ]
+    scope.gamesSelectedList = [
+      {
+        id: "dwdawdladd"
+        title: "StarCraft 2: Heart of The Swarm"
+        guid: ""
+      }
+    ]
+    scope.selectGame = (game) ->
+      scope.gamesAvailableList.splice(
+        $.inArray(game,scope.gamesAvailableList),
+        1
+      )
+      scope.gamesSelectedList.push(game)
 
-    scope.submit = ->
-      news.tittel = scope.news.title
-      news.$query()
+    scope.deselectGame = (game) ->
+      scope.gamesSelectedList.splice($.inArray(game,scope.gamesSelectedList),1)
+      scope.gamesAvailableList.push(game)
 
+    scope.register = () ->
 
-
-    scope.mydata
-    scope.start = ->
-      console.log('start')
-      http({method:'GET', url:'/partials/partial1.html'})
-        .success((data,status,headers,config) ->
-          rootScope.$broadcast('modal','/partials/register.html')
-          $("#modal").modal('show')
-        )
-        .error((data,status,headers,config) ->
-          return false
-        )
-
-
-
-      return null
-
-
-    scope.footer = RegisterWizard.currentStep
 ])

@@ -1,0 +1,106 @@
+//
+   Created with IntelliJ IDEA.
+   User: Christophe
+   Date: 18.03.13
+   Time: 19:08
+   To change this template use File | Settings | File Templates.
+
+div.container
+    div.row
+        div.span12
+            h1 Register user account
+        form.form-horizontal.span12(name="registerForm",ng-controller="RegisterCtrl", ng-submit="login()")
+                legend Account information
+                div.control-group
+                    label.control-label Username (Email)
+                    div.controls
+                        input(type="email", ng-model="username", required)
+                div.control-group
+                    label.control-label Password
+                    div.controls
+                        input(type="password", ng-model="password",required)
+                div.control-group
+                    label.control-label Confirm password
+                    div.controls
+                        input(type="password", ng-model="confirmationPassword",required)
+                legend General information
+                div.control-group
+                    label.control-label Firstname
+                    div.controls
+                        input(type="text", ng-model="firstname",required)
+                div.control-group
+                    label.control-label Surname
+                    div.controls
+                        input(type="text", ng-model="Surname",required)
+                div.control-group(ng-init="gender = 'm'")
+                    label.control-label Gender
+                    div.controls
+                        select(ng-model="gender", required)
+                            option(value="m") Male
+                            option(value="f") Female
+                div.control-group
+                    label.control-label Mobilephone number
+                    div.controls
+                        input(type="text", ng-model="mobilenumber", required, ui-date)
+                div.control-group
+                    label.control-label Date of birth
+                    div.controls
+                        input(type="text", ng-model="dateOfBirth", required, ui-date)
+                div.control-group
+                    label.control-label Nationality
+                    div.controls
+                        input(type="text", ng-model="nationality", required)
+                div.control-group
+                    label.control-label Address
+                    div.controls
+                        input(type="text", ng-model="address", required)
+                div.control-group
+                    label.control-label Postcode
+                    div.controls
+                        input(type="text", ng-model="postcode", required)
+                div.control-group
+                    label.control-label Postplace
+                    div.controls
+                        input(type="text", ng-model="postplace", required)
+                legend Choose your games
+                div.row.registerGames
+                    div.span6
+                        input(ng-model="searchAvailableGames", placeholder="Search in available game titles", type="search")
+                        .row
+                            div.span3
+                                h4 Available game titles
+                                ul
+                                    li(ng-repeat="game in gamesAvailableList | filter:searchAvailableGames")
+                                        a.text-success(ng-click="selectGame(game)")
+                                            {{ game.title }}
+                                            i.icon.icon-chevron-right
+                            div.span3
+                                h4 Selected game titles
+                                ul
+                                    li(ng-repeat="game in gamesSelectedList")
+                                        a.text-error(ng-click="deselectGame(game)")
+                                            i.icon.icon-chevron-left
+                                            |  {{ game.title }}
+                                        input(ng-model="game.guid", type="text", placeholder="GUID")
+                    .span6
+                        .well
+                            h4.text-info Information!
+                            p Use the arrows &nbsp;
+                                a.disabled.text-success
+                                    i.icon.icon-chevron-right
+                                |  and &nbsp;
+                                a.disabled.text-error
+                                    i.icon.icon-chevron-left
+                                |  to
+                                span.text-success
+                                    b  add
+                                |  and
+                                span.text-error
+                                    b  remove
+                                |  games from your list, this can be edited at anytime!
+
+
+
+                div.control-group
+                        hr
+                        button.btn.btn-success.pull-right(type="submit") Register your new account

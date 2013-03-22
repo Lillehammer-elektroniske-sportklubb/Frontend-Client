@@ -1,0 +1,13 @@
+<atlassian-ide-plugin>
+  <project-configuration>
+    <servers>
+      <jira>
+        <server-id>ae615544-3eb7-4ea1-8115-d004d5da451e</server-id>
+        <name>Lions Jira</name>
+        <url>http://kjartan.dyndns.org:9090</url>
+        <shared>false</shared>
+      </jira>
+    </servers>
+    <default-jira-server>ae615544-3eb7-4ea1-8115-d004d5da451e</default-jira-server>
+  </project-configuration>
+</atlassian-ide-plugin>

@@ -1,0 +1,44 @@
+<!--
+<Created>with IntelliJ IDEA.</Created>
+<User>
+  <Christophe></Christophe>
+</User>
+<Date>
+  <18 class="03 13"></18>
+</Date>
+<Time>
+  <19:08></19:08>
+</Time>
+<To>change this template use File | Settings | File Templates.</To>-->
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <legend>Please authenticate</legend>
+    </div>
+    <form name="loginForm" ng-controller="UsersCtrl" ng-submit="login()" class="form-horizontal span6">
+      <div class="control-group">
+        <label class="control-label">Username</label>
+        <div class="controls">
+          <input type="email" ng-model="username" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Password</label>
+        <div class="controls">
+          <input type="password" ng-model="password" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Login</button>
+        </div>
+      </div>
+    </form>
+    <div class="span6">
+      <p>In order to use our services you have to authenticate yourself</p>
+      <p class="clear"></p>
+      <p>Don't have an account?</p>
+      <button ng-click="$location.path('/user/register')" class="btn btn-info">Register a new account NOW!</button>
+    </div>
+  </div>
+</div>

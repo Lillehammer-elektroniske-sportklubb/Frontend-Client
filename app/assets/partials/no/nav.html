@@ -1,0 +1,29 @@
+
+<ul class="nav">
+  <li ng-class="getclass('Start')"><a ng-href="/start"><i class="icon-white icon-home"></i></a></li>
+  <li ng-class="getClass('/user/login')" class="dropdown"><a data-toggle="dropdown" ng-href="/user/login" data-target="#" class="dropdown-toggle"><span>Log inn</span></a>
+    <!--    b.caret-->
+  </li>
+  <li ng-class="getClass('/play')" class="dropdown"><a data-toggle="dropdown" ng-href="/play" data-target="#" class="dropdown-toggle"><span>Play &nbsp;<span class="badge">1</span></span><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a>test</a></li>
+    </ul>
+  </li>
+  <li ng-class="getClass('/create')" class="dropdown"><a data-toggle="dropdown" ng-href="/create" data-target="#" class="dropdown-toggle"><span>Create</span><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a>New tournament</a></li>
+    </ul>
+  </li>
+</ul>
+<form class="navbar-search pull-right">
+  <input type="text" placeholder="Search" class="search-query"/>
+</form>
+<ul class="nav pull-right">
+  <li class="divider-vertical"></li>
+  <li ng-class="getClass('/help')" class="dropdown"><a data-toggle="dropdown" ng-href="/help" data-target="#" class="dropdown-toggle"><span>Help</span><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a>New tournament</a></li>
+    </ul>
+  </li>
+  <li class="divider-vertical"></li>
+</ul>

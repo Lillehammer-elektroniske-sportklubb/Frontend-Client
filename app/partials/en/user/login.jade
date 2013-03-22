@@ -1,0 +1,28 @@
+//
+   Created with IntelliJ IDEA.
+   User: Christophe
+   Date: 18.03.13
+   Time: 19:08
+   To change this template use File | Settings | File Templates.
+
+div.container
+    div.row
+        div.span12
+            legend Please authenticate
+        form.form-horizontal.span6(name="loginForm",ng-controller="UsersCtrl", ng-submit="login()")
+                div.control-group
+                    label.control-label Username
+                    div.controls
+                        input(type="email", ng-model="username", required)
+                div.control-group
+                    label.control-label Password
+                    div.controls
+                        input(type="password", ng-model="password",required)
+                div.control-group
+                    div.controls
+                        button.btn.btn-success(type="submit") Login
+        div.span6
+            p In order to use our services you have to authenticate yourself
+            p.clear
+            p Don't have an account?
+            button.btn.btn-info(ng-click="$location.path('/user/register')") Register a new account NOW!

@@ -3,7 +3,7 @@
   <div class="row">
     <div style="text-align: center" class="span6 offset3"><img src="//cdn.bracket.no/img/lions.svg" style="height: 300px"/><br /></div>
     <div class="span6 offset3 well">
-      <form ng-controller="AuthenticationCtrl" class="form-horizontal">
+      <form name="Login" ng-controller="AuthenticationCtrl" class="form-horizontal">
         <legend style="text-align:center" class="text-error">Please authenticate</legend>
         <div class="control-group">
           <label class="control-label">Email</label>
@@ -19,7 +19,7 @@
         </div>
         <div class="control-group">
           <label class="control-label">
-            <button type="submit" ng-click="submit()" class="btn btn-primary">Sign in</button>
+            <button type="submit" ng-click="login()" class="btn btn-primary">Sign in</button>
           </label>
           <div class="controls">
             <label class="checkbox">

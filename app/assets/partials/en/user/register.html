@@ -17,41 +17,69 @@
     </div>
     <form name="registerForm" ng-controller="RegisterCtrl" ng-submit="login()" class="form-horizontal span12">
       <legend>Account information</legend>
-      <div class="control-group">
-        <label class="control-label">Username (Email)</label>
-        <div class="controls">
-          <input type="email" ng-model="username" required="required"/>
+      <div class="row">
+        <div class="span3">
+          <div class="control-group">
+            <label class="control-label">Username (Email)</label>
+            <div class="controls">
+              <input type="email" ng-model="username" required="required"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Confirm email</label>
+            <div class="controls">
+              <input type="email" name="confirmationUsername" ng-model="confirmationUsername" required="required" ui-validate-equals="username"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Password</label>
+            <div class="controls">
+              <input type="password" ng-model="password" required="required"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Confirm password</label>
+            <div class="controls">
+              <input type="password" name="confirmationPassword" ng-model="confirmationPassword" required="required" ui-validate-equals="password"/>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Password</label>
-        <div class="controls">
-          <input type="password" ng-model="password" required="required"/>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Confirm password</label>
-        <div class="controls">
-          <input type="password" ng-model="confirmationPassword" required="required"/>
+        <div class="span9">
+          <div class="control-group">
+            <div class="controls">&nbsp;</div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <div ng-show="registerForm.confirmationUsername.$error.equal">Both emails must match</div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">&nbsp;</div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <div ng-show="registerForm.confirmationPassword.$error.equal">Both passwords must match</div>
+            </div>
+          </div>
         </div>
       </div>
       <legend>General information</legend>
       <div class="control-group">
         <label class="control-label">Firstname</label>
         <div class="controls">
-          <input type="text" ng-model="firstname" required="required"/>
+          <input type="text" ng-model="profile.firstname" required="required"/>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label">Surname</label>
         <div class="controls">
-          <input type="text" ng-model="Surname" required="required"/>
+          <input type="text" ng-model="profile.surname" required="required"/>
         </div>
       </div>
-      <div ng-init="gender = 'm'" class="control-group">
+      <div ng-init="profile.gender = 'm'" class="control-group">
         <label class="control-label">Gender</label>
         <div class="controls">
-          <select ng-model="gender" required="required">
+          <select ng-model="profile.gender" required="required">
             <option value="m">Male</option>
             <option value="f">Female</option>
           </select>
@@ -60,37 +88,37 @@
       <div class="control-group">
         <label class="control-label">Mobilephone number</label>
         <div class="controls">
-          <input type="text" ng-model="mobilenumber" required="required" ui-date="ui-date"/>
+          <input type="text" ng-model="profile.mobilenumber" required="required" ui-date="ui-date"/>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label">Date of birth</label>
         <div class="controls">
-          <input type="text" ng-model="dateOfBirth" required="required" ui-date="ui-date"/>
+          <input type="text" ng-model="profile.dateOfBirth" required="required" ui-date="ui-date"/>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label">Nationality</label>
         <div class="controls">
-          <input type="text" ng-model="nationality" required="required"/>
+          <input type="text" ng-model="profile.nationality" required="required"/>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label">Address</label>
         <div class="controls">
-          <input type="text" ng-model="address" required="required"/>
+          <input type="text" ng-model="profile.address" required="required"/>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label">Postcode</label>
         <div class="controls">
-          <input type="text" ng-model="postcode" required="required"/>
+          <input type="text" ng-model="profile.postcode" required="required"/>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label">Postplace</label>
         <div class="controls">
-          <input type="text" ng-model="postplace" required="required"/>
+          <input type="text" ng-model="profile.postplace" required="required"/>
         </div>
       </div>
       <legend>Choose your games</legend>
@@ -123,7 +151,7 @@
       </div>
       <div class="control-group">
         <hr/>
-        <button type="submit" class="btn btn-success pull-right">Register your new account</button>
+        <button type="submit" ng-click="register()" class="btn btn-success pull-right">Register your new account</button>
       </div>
     </form>
   </div>

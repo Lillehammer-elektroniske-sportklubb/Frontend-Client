@@ -22,7 +22,8 @@ App.config([
   ($routeProvider, $locationProvider) ->
 
     localization = 'no'
-    baseurl = '//cdn.bracket.no'
+    baseurl = ''
+
     $routeProvider
 
       .when('/',
@@ -38,6 +39,11 @@ App.config([
       .when('/user/register',
         {
         templateUrl: baseurl + '/partials/en/user/register.html'
+        }
+      )
+      .when('/user/profile/:id',
+        {
+        templateUrl: baseurl + '/partials/en/user/edit.html'
         }
       )
       .when('/tournament/dashboard/:id',

@@ -3,12 +3,40 @@ controller.controller('BracketCtrl', [
   '$location'
   '$resource'
   '$rootScope'
+  'SessionService'
+  'TokenHandler'
+  'TemplateService'
+  '$cookieStore'
 
-  ($scope, $location, $resource, $rootScope) ->
+  (
+    $scope, $location, $resource, $rootScope,SessionService,TokenHandler,
+    TemplateService, cookieStore
+  ) ->
 
     # Uses the url to determine if the selected
     # menu item should have the class active.
     $rootScope.pageTitle = "Oslo Lions Elektroniske Sportsklubb"
+    $rootScope.config = {
+      maintenance: true
+      baseUrl: '//cdn.bracket.no'
+    }
+
+
+    ###
+      Authenticate Guest
+    ###
+   # $rootScope.auth = User.get()
+    $rootScope.menus = []
+    ts = new TemplateService
+
+    if(!TokenHandler.get())
+      $rootScope.auth = SessionService.save(
+        null
+        (data) ->
+
+      )
+
+
 
     $scope.$location = $location
     $scope.$watch('$location.path()', (path) ->
@@ -29,11 +57,26 @@ controller.controller('BracketCtrl', [
       else
         return ''
 
-    $rootScope.$on('event:auth:loginRequired', (data) ->
-      $location.path('/user/login')
+    $rootScope.$on('event:auth:newkey', (obj,key) ->
+      TokenHandler.set(key)
+      cookieStore.put('key', key)
+      $rootScope.menus = ts.$get(
+        null
+        (data) ->
+          $rootScope.menus = data
+      )
+
+
+
+    )
+    $rootScope.$on('event:auth:loginRequired', () ->
+      TokenHandler.set(false)
+      if(!$rootScope.config.maintenance)
+        $location.path('/user/login')
+      else
+        $location.path('/')
+
+
     )
 
-    $rootScope.config = {
-      baseUrl: '//cdn.bracket.no'
-    }
 ])

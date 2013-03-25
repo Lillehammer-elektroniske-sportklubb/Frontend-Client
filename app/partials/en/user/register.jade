@@ -11,57 +11,74 @@ div.container
             h1 Register user account
         form.form-horizontal.span12(name="registerForm",ng-controller="RegisterCtrl", ng-submit="login()")
                 legend Account information
-                div.control-group
-                    label.control-label Username (Email)
-                    div.controls
-                        input(type="email", ng-model="username", required)
-                div.control-group
-                    label.control-label Password
-                    div.controls
-                        input(type="password", ng-model="password",required)
-                div.control-group
-                    label.control-label Confirm password
-                    div.controls
-                        input(type="password", ng-model="confirmationPassword",required)
+                div.row
+                    div.span3
+                        div.control-group
+                            label.control-label Username (Email)
+                            div.controls
+                                input(type="email", ng-model="username", required)
+                        div.control-group
+                            label.control-label Confirm email
+                            div.controls
+                                input(type="email", name="confirmationUsername", ng-model="confirmationUsername", required,ui-validate-equals="username")
+                        div.control-group
+                            label.control-label Password
+                            div.controls
+                                input(type="password", ng-model="password",required)
+                        div.control-group
+                            label.control-label Confirm password
+                            div.controls
+                                input(type="password",name="confirmationPassword", ng-model="confirmationPassword",required, ui-validate-equals="password")
+                    div.span9
+                        div.control-group
+                            div.controls &nbsp;
+                        div.control-group
+                            div.controls
+                                div(ng-show="registerForm.confirmationUsername.$error.equal") Both emails must match
+                        div.control-group
+                            div.controls &nbsp;
+                        div.control-group
+                            div.controls
+                                div(ng-show="registerForm.confirmationPassword.$error.equal") Both passwords must match
                 legend General information
                 div.control-group
                     label.control-label Firstname
                     div.controls
-                        input(type="text", ng-model="firstname",required)
+                        input(type="text", ng-model="profile.firstname",required)
                 div.control-group
                     label.control-label Surname
                     div.controls
-                        input(type="text", ng-model="Surname",required)
-                div.control-group(ng-init="gender = 'm'")
+                        input(type="text", ng-model="profile.surname",required)
+                div.control-group(ng-init="profile.gender = 'm'")
                     label.control-label Gender
                     div.controls
-                        select(ng-model="gender", required)
+                        select(ng-model="profile.gender", required)
                             option(value="m") Male
                             option(value="f") Female
                 div.control-group
                     label.control-label Mobilephone number
                     div.controls
-                        input(type="text", ng-model="mobilenumber", required, ui-date)
+                        input(type="text", ng-model="profile.mobilenumber", required, ui-date)
                 div.control-group
                     label.control-label Date of birth
                     div.controls
-                        input(type="text", ng-model="dateOfBirth", required, ui-date)
+                        input(type="text", ng-model="profile.dateOfBirth", required, ui-date)
                 div.control-group
                     label.control-label Nationality
                     div.controls
-                        input(type="text", ng-model="nationality", required)
+                        input(type="text", ng-model="profile.nationality", required)
                 div.control-group
                     label.control-label Address
                     div.controls
-                        input(type="text", ng-model="address", required)
+                        input(type="text", ng-model="profile.address", required)
                 div.control-group
                     label.control-label Postcode
                     div.controls
-                        input(type="text", ng-model="postcode", required)
+                        input(type="text", ng-model="profile.postcode", required)
                 div.control-group
                     label.control-label Postplace
                     div.controls
-                        input(type="text", ng-model="postplace", required)
+                        input(type="text", ng-model="profile.postplace", required)
                 legend Choose your games
                 div.row.registerGames
                     div.span6
@@ -103,4 +120,4 @@ div.container
 
                 div.control-group
                         hr
-                        button.btn.btn-success.pull-right(type="submit") Register your new account
+                        button.btn.btn-success.pull-right(type="submit", ng-click="register()") Register your new account

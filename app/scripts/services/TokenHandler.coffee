@@ -1,11 +1,16 @@
-service.factory('TokenHandler',
-() ->
+service.factory('TokenHandler', ['$rootScope','$cookieStore'
+($rootScope,cookieStore) ->
   tokenHandler = {}
   token = false
   tokenHandler.set = (newToken) ->
     token = newToken
+    cookieStore.put('key',token)
 
   tokenHandler.get = () ->
+    if(!token)
+      key = cookieStore.get('key')
+      if(key != undefined && key != null)
+        @set(key)
     return token
 
   tokenHandler.format = () ->
@@ -18,7 +23,7 @@ service.factory('TokenHandler',
       return {}
   tokenHandler.wrapActions = ( resource, actions) ->
     if(actions == undefined)
-      actions = ['query', 'save', 'update', 'remove', 'delete']
+      actions = ['get','query', 'save', 'update', 'remove', 'delete']
     wrappedResource = resource
     for i in [0..actions.length] by 1
       tokenWrapper( wrappedResource, actions[i] )
@@ -35,4 +40,4 @@ service.factory('TokenHandler',
       )
 
   return tokenHandler
-)
+])

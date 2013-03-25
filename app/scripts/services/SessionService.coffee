@@ -1,6 +1,6 @@
-service.factory('UserService', ['$resource', 'TokenHandler',
+service.factory('SessionService', ['$resource', 'TokenHandler',
   ($resource, tokenHandler) ->
-    resource = $resource('http://localhost:port/user/:action',
+    resource = $resource('http://localhost:port/session/:action',
       {action:'@action', port: ':9000'}
       {
         'get':    {

@@ -1,0 +1,68 @@
+//
+   Created with IntelliJ IDEA.
+   User: Christophe
+   Date: 18.03.13
+   Time: 19:08
+   To change this template use File | Settings | File Templates.
+
+
+div.row
+    div.span12
+        h1 Alter account information
+    form.form-horizontal.span12(name="registerForm",ng-controller="UsersCtrl", ng-submit="login()")
+        legend Account information
+        div.control-group
+            label.control-label Username (Email)
+            div.controls
+                input(type="email", ng-model="user.username", required)
+        div.control-group
+            label.control-label Password
+            div.controls
+                input(type="password", ng-model="user.password",required)
+        div.control-group
+            label.control-label Confirm password
+            div.controls
+                input(type="password", ng-model="confirmationPassword",required)
+        legend General information
+        div.control-group
+            label.control-label Firstname
+            div.controls
+                input(type="text", ng-model="user.profile.firstname",required)
+        div.control-group
+            label.control-label Surname
+            div.controls
+                input(type="text", ng-model="Surname",required)
+        div.control-group
+            label.control-label Gender
+            div.controls
+                select(ng-model="user.profile.gender", required)
+                    option(value="m") Male
+                    option(value="f") Female
+        div.control-group
+            label.control-label Mobilephone number
+            div.controls
+                input(type="text", ng-model="user.profile.mobilenumber", required, ui-date)
+        div.control-group
+            label.control-label Date of birth
+            div.controls
+                input(type="text", ng-model="user.profile.dateOfBirth", required, ui-date)
+        div.control-group
+            label.control-label Nationality
+            div.controls
+                input(type="text", ng-model="user.profile.nationality", required)
+        div.control-group
+            label.control-label Address
+            div.controls
+                input(type="text", ng-model="user.profile.address", required)
+        div.control-group
+            label.control-label Postcode
+            div.controls
+                input(type="text", ng-model="user.profile.postcode", required)
+        div.control-group
+            label.control-label Postplace
+            div.controls
+                input(type="text", ng-model="user.profile.postplace", required)
+
+        div.control-group
+            hr
+            button.btn.btn-success.pull-right(type="submit") Save changes

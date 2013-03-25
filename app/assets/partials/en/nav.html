@@ -1,20 +1,14 @@
 
-<ul class="nav">
-  <li ng-class="getclass('Start')"><a ng-href="/#"><i class="icon-white icon-home"></i></a></li>
-  <li ng-class="getClass('/user/login')"><a ng-href="/#/user/login"><span>Login</span></a>
-    <!--    b.caret-->
-  </li>
-  <li ng-class="getClass('/play')" class="dropdown"><a data-toggle="dropdown" ng-href="/play" data-target="#" class="dropdown-toggle"><span>Play &nbsp;<span class="badge">1</span></span><b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      <li><a>test</a></li>
-    </ul>
-  </li>
-</ul>
-<ul class="nav pull-right">
-  <li class="divider-vertical"></li>
-  <li ng-class="getClass('/help')" class="dropdown"><a data-toggle="dropdown" ng-href="/help" data-target="#" class="dropdown-toggle"><span>Help</span><b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      <li><a>New tournament</a></li>
-    </ul>
-  </li>
-</ul>
+<div>
+  <ul class="nav">
+    <li ng-repeat="item in items" ng-class="getClass('{{item.activeOn}}')"><a href="{{ item.link }}"><span>{{ item.title }}</span></a></li>
+  </ul>
+  <ul class="nav pull-right">
+    <li class="divider-vertical"></li>
+    <li ng-class="getClass('/help')" class="dropdown"><a data-toggle="dropdown" ng-href="/help" data-target="#" class="dropdown-toggle"><span>Help</span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a>New tournament</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

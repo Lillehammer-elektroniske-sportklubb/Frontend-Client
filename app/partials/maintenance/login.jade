@@ -5,7 +5,7 @@
             | <br />
 
         .span6.offset3.well
-                form.form-horizontal(ng-controller="AuthenticationCtrl")
+                form.form-horizontal(name="Login",ng-controller="AuthenticationCtrl")
                     legend.text-error(style="text-align:center") Please authenticate
 
                     div.control-group
@@ -18,7 +18,7 @@
                             input(type="password",placeholder="Password", ng-model="user.password")
                     div.control-group
                         label.control-label
-                            button.btn.btn-primary(type="submit", ng-click="submit()")
+                            button.btn.btn-primary(type="submit", ng-click="login()")
                                 | Sign in
                         div.controls
                             label.checkbox

@@ -3,18 +3,10 @@ controller.controller('RegisterCtrl', [
   (rootScope, scope) ->
 
     scope.gamesAvailableList = [
-      {
-        id: "dwdawdlad"
-        title: "Counter-Strike: Global Offensive"
-        guid: ""
-      }
+
     ]
     scope.gamesSelectedList = [
-      {
-        id: "dwdawdladd"
-        title: "StarCraft 2: Heart of The Swarm"
-        guid: ""
-      }
+
     ]
     scope.selectGame = (game) ->
       scope.gamesAvailableList.splice(
@@ -28,5 +20,6 @@ controller.controller('RegisterCtrl', [
       scope.gamesAvailableList.push(game)
 
     scope.register = () ->
+      console.log(user)
 
 ])

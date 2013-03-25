@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title ng-bind-template="{{pageTitle}}"></title>
-    <link rel="stylesheet" href="/css/app.css"><!--[if lte IE 7]>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script><![endif]--><!--[if lte IE 8]>
+    <link rel="stylesheet" href="//cdn.bracket.no/css/app.css"><!--[if lte IE 7]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script><![endif]--><!--[if lte IE 8]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <script>
       window.brunch = window.brunch || {};
@@ -22,19 +22,9 @@
   </head>
   <body ng-controller="BracketCtrl">
     <div class="wrapper">
-      <div ng-controller="MenusCtrl" ng-show="items.length &gt; 0" ng-class="{true: 'navbar navbar-fixed-top'}[items.length &gt; 0]">
-        <div class="navbar-inner">
-          <button data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="brand"></a>
-          <div class="nav-collapse collapse">
-            <div ng-include="'/partials/en/nav.html'"></div>
-          </div>
-        </div>
-      </div>
-      <div class="container main-content">
-        <div ng-view></div>
-      </div>
-      <div class="push"></div>
+      <div ng-view></div>
     </div>
+    <div class="push"></div>
     <footer class="footer">
       <div class="container">
         <p><small>

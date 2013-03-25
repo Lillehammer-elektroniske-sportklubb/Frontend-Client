@@ -1,61 +1,16 @@
-ul.nav
-    li(ng-class="getclass('Start')")
-        a(ng-href="/#")
-            i.icon-white.icon-home
-    li(ng-class="getClass('/user/login')")
-        a(ng-href='/#/user/login')
-            span Login
-        //    b.caret
-        //-
+div
+    ul.nav
+        li(ng-repeat="item in items", ng-class="getClass('{{item.activeOn}}')")
+            a(href="{{ item.link }}")
+                span {{ item.title }}
+
+
+    ul.nav.pull-right
+        li.divider-vertical
+        li.dropdown(ng-class="getClass('/help')")
+            a.dropdown-toggle(data-toggle="dropdown",ng-href='/help', data-target="#")
+                span Help
+                b.caret
             ul.dropdown-menu
                 li
-                    a(ng-href='/user/dashboard')
-                        i.icon-white.icon-desktop
-                        span  Dashboard
-                li.divider
-                li
-                    a(ng-href='/user/profile')
-                        i.icon-white.icon-user
-                        span  Profile
-                li
-                    a(ng-href='/user/games')
-                        i.icon-white.icon-comments-alt
-                        span  Messages
-                li
-                    a(ng-href='/user/calendar')
-                        i.icon-white.icon-calendar
-                        span  Calendar
-                li.divider
-                li
-                    a(ng-href='/user/games')
-                        i.icon-white.icon-wrench
-                        span  Preferences
-                li
-                    a(ng-href='/user/games')
-                        i.icon-white.icon-key
-                        span  Games
-                li.divider
-                li
-                    a(ng-href='/user/games')
-                        i.icon-white.icon-signout
-                        span  Logout
-
-    li.dropdown(ng-class="getClass('/play')")
-        a.dropdown-toggle(data-toggle="dropdown",ng-href='/play', data-target="#")
-            span Play &nbsp;
-                span.badge 1
-            b.caret
-        ul.dropdown-menu
-            li
-               a test
-
-
-ul.nav.pull-right
-    li.divider-vertical
-    li.dropdown(ng-class="getClass('/help')")
-        a.dropdown-toggle(data-toggle="dropdown",ng-href='/help', data-target="#")
-            span Help
-            b.caret
-        ul.dropdown-menu
-            li
-                a New tournament
+                    a New tournament

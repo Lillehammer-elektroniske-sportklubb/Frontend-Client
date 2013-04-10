@@ -14,26 +14,7 @@
   <div class="span12">
     <h1>Alter account information</h1>
   </div>
-  <form name="registerForm" ng-controller="UsersCtrl" ng-submit="login()" class="form-horizontal span12">
-    <legend>Account information</legend>
-    <div class="control-group">
-      <label class="control-label">Username (Email)</label>
-      <div class="controls">
-        <input type="email" ng-model="user.username" required="required"/>
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label">Password</label>
-      <div class="controls">
-        <input type="password" ng-model="user.password" required="required"/>
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label">Confirm password</label>
-      <div class="controls">
-        <input type="password" ng-model="confirmationPassword" required="required"/>
-      </div>
-    </div>
+  <form name="editForm" ng-controller="UsersCtrl" ng-submit="update(user)" class="form-horizontal span12">
     <legend>General information</legend>
     <div class="control-group">
       <label class="control-label">Firstname</label>
@@ -44,7 +25,7 @@
     <div class="control-group">
       <label class="control-label">Surname</label>
       <div class="controls">
-        <input type="text" ng-model="Surname" required="required"/>
+        <input type="text" ng-model="user.profile.lastname" required="required"/>
       </div>
     </div>
     <div class="control-group">
@@ -59,13 +40,13 @@
     <div class="control-group">
       <label class="control-label">Mobilephone number</label>
       <div class="controls">
-        <input type="text" ng-model="user.profile.mobilenumber" required="required" ui-date="ui-date"/>
+        <input type="text" ng-model="user.profile.mobilenumber" required="required"/>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">Date of birth</label>
       <div class="controls">
-        <input type="text" ng-model="user.profile.dateOfBirth" required="required" ui-date="ui-date"/>
+        <input type="text" ng-model="user.profile.dateOfBirth" required="required" ui-date="true"/>
       </div>
     </div>
     <div class="control-group">
@@ -83,13 +64,13 @@
     <div class="control-group">
       <label class="control-label">Postcode</label>
       <div class="controls">
-        <input type="text" ng-model="user.profile.postcode" required="required"/>
+        <input type="text" ng-model="user.profile.postCode" required="required"/>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">Postplace</label>
       <div class="controls">
-        <input type="text" ng-model="user.profile.postplace" required="required"/>
+        <input type="text" ng-model="user.profile.postPlace" required="required"/>
       </div>
     </div>
     <div class="control-group">

@@ -9,7 +9,7 @@ div.container
     div.row
         div.span12
             h1 Register user account
-        form.form-horizontal.span12(name="registerForm",ng-controller="RegisterCtrl", ng-submit="login()")
+        form.form-horizontal.span12(name="registerForm",ng-controller="UsersCtrl")
                 legend Account information
                 div.row
                     div.span3
@@ -58,11 +58,11 @@ div.container
                 div.control-group
                     label.control-label Mobilephone number
                     div.controls
-                        input(type="text", ng-model="profile.mobilenumber", required, ui-date)
+                        input(type="text", ng-model="profile.mobilenumber", required)
                 div.control-group
                     label.control-label Date of birth
                     div.controls
-                        input(type="text", ng-model="profile.dateOfBirth", required, ui-date)
+                        input(type="text", ng-model="profile.dateOfBirth", required, ui-date="true")
                 div.control-group
                     label.control-label Nationality
                     div.controls
@@ -74,47 +74,48 @@ div.container
                 div.control-group
                     label.control-label Postcode
                     div.controls
-                        input(type="text", ng-model="profile.postcode", required)
+                        input(type="text", ng-model="profile.postCode", required)
                 div.control-group
                     label.control-label Postplace
                     div.controls
-                        input(type="text", ng-model="profile.postplace", required)
-                legend Choose your games
-                div.row.registerGames
-                    div.span6
-                        input(ng-model="searchAvailableGames", placeholder="Search in available game titles", type="search")
-                        .row
-                            div.span3
-                                h4 Available game titles
-                                ul
-                                    li(ng-repeat="game in gamesAvailableList | filter:searchAvailableGames")
-                                        a.text-success(ng-click="selectGame(game)")
-                                            {{ game.title }}
-                                            i.icon.icon-chevron-right
-                            div.span3
-                                h4 Selected game titles
-                                ul
-                                    li(ng-repeat="game in gamesSelectedList")
-                                        a.text-error(ng-click="deselectGame(game)")
-                                            i.icon.icon-chevron-left
-                                            |  {{ game.title }}
-                                        input(ng-model="game.guid", type="text", placeholder="GUID")
-                    .span6
-                        .well
-                            h4.text-info Information!
-                            p Use the arrows &nbsp;
-                                a.disabled.text-success
-                                    i.icon.icon-chevron-right
-                                |  and &nbsp;
-                                a.disabled.text-error
-                                    i.icon.icon-chevron-left
-                                |  to
-                                span.text-success
-                                    b  add
-                                |  and
-                                span.text-error
-                                    b  remove
-                                |  games from your list, this can be edited at anytime!
+                        input(type="text", ng-model="profile.postPlace", required)
+                 //-
+                    legend Choose your games
+                    div.row.registerGames
+                        div.span6
+                            input(ng-model="searchAvailableGames", placeholder="Search in available game titles", type="search")
+                            .row
+                                div.span3
+                                    h4 Available game titles
+                                    ul
+                                        li(ng-repeat="game in gamesAvailableList | filter:searchAvailableGames")
+                                            a.text-success(ng-click="selectGame(game)")
+                                                {{ game.title }}
+                                                i.icon.icon-chevron-right
+                                div.span3
+                                    h4 Selected game titles
+                                    ul
+                                        li(ng-repeat="game in gamesSelectedList")
+                                            a.text-error(ng-click="deselectGame(game)")
+                                                i.icon.icon-chevron-left
+                                                |  {{ game.title }}
+                                            input(ng-model="game.guid", type="text", placeholder="GUID")
+                        .span6
+                            .well
+                                h4.text-info Information!
+                                p Use the arrows &nbsp;
+                                    a.disabled.text-success
+                                        i.icon.icon-chevron-right
+                                    |  and &nbsp;
+                                    a.disabled.text-error
+                                        i.icon.icon-chevron-left
+                                    |  to
+                                    span.text-success
+                                        b  add
+                                    |  and
+                                    span.text-error
+                                        b  remove
+                                    |  games from your list, this can be edited at anytime!
 
 
 

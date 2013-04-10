@@ -1,5 +1,6 @@
 'use strict'
 
+
 # Declare app level module which depends on filters, and services
 App = angular.module('Bracket', [
   'ngCookies'
@@ -11,6 +12,7 @@ App = angular.module('Bracket', [
   'auth-interceptor'
   'placeholders.img'
   'placeholders.txt'
+  'ui'
   'ui.bootstrap'
 
 ])

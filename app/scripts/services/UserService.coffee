@@ -1,7 +1,7 @@
-service.factory('UserService', ['$resource', 'TokenHandler',
-  ($resource, tokenHandler) ->
-    resource = $resource('http://localhost:port/user/:action',
-      {action:'@action', port: ':9000'}
+service.factory('UserService', ['config','$resource', 'TokenHandler',
+  (config, $resource, tokenHandler) ->
+    resource = $resource(config.backendUrl + '/user/:action/:id',
+      {action:'@action', id:'@id',port:':9000'}
       {
         'get':    {
           method:'JSONP', params: {callback: 'JSON_CALLBACK'}

@@ -47,7 +47,8 @@ angular.module('auth-interceptor', [])
           return response
 
         error = (response) ->
-          if(response.status == 401 || response.status == 0)
+          console.log(response,$q)
+          if(response.status == 401 && !response.config.ignoreAuthModule)
             deferred = $q.defer()
             authServiceProvider.pushToBuffer(response.config, deferred)
             $rootScope.$broadcast('event:auth:loginRequired')

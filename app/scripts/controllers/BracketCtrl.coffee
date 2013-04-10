@@ -13,14 +13,20 @@ controller.controller('BracketCtrl', [
     TemplateService, cookieStore
   ) ->
 
+    updateMenus = () ->
+      $rootScope.menus = ts.$get(
+        null
+        (data) ->
+          $rootScope.menus = data
+      )
     # Uses the url to determine if the selected
     # menu item should have the class active.
     $rootScope.pageTitle = "Oslo Lions Elektroniske Sportsklubb"
     $rootScope.config = {
-      maintenance: true
+      maintenance: false
       baseUrl: '//cdn.bracket.no'
+      backendUrl: '//locahost:port'
     }
-
 
     ###
       Authenticate Guest
@@ -35,6 +41,10 @@ controller.controller('BracketCtrl', [
         (data) ->
 
       )
+      updateMenus()
+    else
+      updateMenus()
+
 
 
 
@@ -60,14 +70,7 @@ controller.controller('BracketCtrl', [
     $rootScope.$on('event:auth:newkey', (obj,key) ->
       TokenHandler.set(key)
       cookieStore.put('key', key)
-      $rootScope.menus = ts.$get(
-        null
-        (data) ->
-          $rootScope.menus = data
-      )
-
-
-
+      updateMenus()
     )
     $rootScope.$on('event:auth:loginRequired', () ->
       TokenHandler.set(false)
@@ -78,5 +81,7 @@ controller.controller('BracketCtrl', [
 
 
     )
+
+
 
 ])

@@ -24,7 +24,14 @@ controller.controller('AuthenticationCtrl', [
           session.username = scope.user.email
           session.password = scope.user.password
 
-          session.$save()
+          session.$save(null,
+            (data) ->
+              cookieStore.put("key",data.sessionKey)
+              TokenHandler.setToken(data.sessionKey)
+            (data) ->
+              console.log("error", data)
+
+          )
 
 
 

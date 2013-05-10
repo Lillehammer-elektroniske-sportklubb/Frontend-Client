@@ -1,7 +1,7 @@
 service.factory('SessionService', ['config','$resource', 'TokenHandler',
   (config,$resource, tokenHandler) ->
     resource = $resource(config.backendUrl + '/session/:action',
-      {action:'@action',port:':9000'}
+      {action:'@action', port: ':9000'}
       {
         'get':    {
           method:'JSONP', params: {callback: 'JSON_CALLBACK'}

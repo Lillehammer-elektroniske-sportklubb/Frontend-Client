@@ -13,6 +13,32 @@ controller.controller('BracketCtrl', [
     TemplateService, cookieStore
   ) ->
 
+    nonCORS = () ->
+      $location.path('/browser')
+
+    switch BrowserDetect.browser
+      when "Explorer"
+        if(BrowserDetect.version < 10)
+          nonCORS()
+      when "Firefox"
+        if(BrowserDetect.version <= 3)
+          nonCORS()
+      when "Safari"
+        if(BrowserDetect.version < 4)
+          nonCORS()
+      when "Opera"
+        if(BrowserDetect.version < 12)
+          nonCORS()
+      when "Opera Mini"
+        nonCORS()
+      when "Opera Mobile"
+        if(BrowserDetect.version < 12)
+          nonCORS()
+
+
+
+
+
     updateMenus = () ->
       $rootScope.menus = ts.$get(
         null

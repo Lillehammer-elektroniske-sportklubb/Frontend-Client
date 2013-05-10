@@ -1,37 +1,37 @@
 .container
     .row
-        .span6.offset3(style="text-align: center")
-            img(src="//cdn.bracket.no/img/lions.svg", style="height: 300px")
-            | <br />
+        .span12
+            tabs
+                pane.row(heading="Live stream og chat")
+                    .span8
+                        | <object type="application/x-shockwave-flash" height="469" width="770" id="live_embed_player_flash" data="//secure.jtvnw.net/widgets/live_embed_player.swf?channel=lionsek" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="//secure.jtvnw.net/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=lionsek&auto_play=true&start_volume=25" /></object><a href="http://www.twitch.tv/lionsek" class="trk" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;">Watch live video from lionsek on www.twitch.tv</a>
+                    .span4
+                        | <iframe frameborder="0" scrolling="no" id="chat_embed" src="https://twitch.tv/chat/embed?channel=lionsek&amp;popout_chat=true" height="500" width="350"></iframe>
+                pane.row(heading="QuakeNet chat med utviklerne")
+                    .span12
+                        | <iframe src="https://webchat.quakenet.org/?channels=shootmania&uio=d4" width="1160" height="600"></iframe>
+                pane.row(heading="Servere")
+                    .span12
+                        table.table.table-bordered.table-condensed
+                            tr
+                                td Shootmania Joust
+                                td srv2.clanserver.no:2350
+                            tr
+                                td Shootmania Elite
+                                td srv2.clanserver.no:2355
+                            tr
+                                td Shootmania Joust
+                                td srv2.clanserver.no:2360
+                            tr
+                                td Shootmania Elite
+                                td srv2.clanserver.no:2365
+                            tr
+                                td Shootmania Joust
+                                td srv2.clanserver.no:2370
+                            tr
+                                td Shootmania
+                                td srv2.clanserver.no:2375
+                            tr
+                                td Shootmania Joust
+                                td srv2.clanserver.no:2380
 
-        .span6.offset3.well
-                form.form-horizontal(name="Login",ng-controller="AuthenticationCtrl")
-                    legend.text-error(style="text-align:center") Please authenticate
-
-                    div.control-group
-                        label.control-label Email
-                        div.controls
-                            input(type="email",placeholder="Email", ng-model="user.email")
-                    div.control-group
-                        label.control-label Password
-                        div.controls
-                            input(type="password",placeholder="Password", ng-model="user.password")
-                    div.control-group
-                        label.control-label
-                            button.btn.btn-primary(type="submit", ng-click="login()")
-                                | Sign in
-                        div.controls
-                            label.checkbox
-                                input(type="checkbox")
-                                | Remember me
-
-                    div.control-group
-                        div.controls
-                            button.btn.btn-small.btn-success(type="submit", ng-click="$location.path('/user/register')")
-                                | Register a new account
-                            button.btn.btn-small.btn-inverse(type="submit")
-                                | Recover lost password
-        .span12(style="text-align: center")
-            h4.text-warning We are opening parts of our website to encompass a
-            a(ng-href="http://www.gathering.org")
-                img(src="//cdn.bracket.no/img/singularity.png")

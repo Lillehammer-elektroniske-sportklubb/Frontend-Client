@@ -23,18 +23,28 @@ html(lang='en')
     script(src='/js/app.js')
   body(ng-controller='BracketCtrl')
     .wrapper
-      div(ng-controller="MenusCtrl",ng-show="items.length > 0", ng-class="{true: 'navbar navbar-fixed-top'}[items.length > 0]")
-        .navbar-inner
-            button.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a(href='/').brand
-            .nav-collapse.collapse
-              div(ng-include="'/partials/en/nav.html'", )
-      .container.main-content
-        div(ng-view)
-      .push
+        div(ng-controller="MenusCtrl",ng-show="items.length > 0", ng-class="{true: 'navbar navbar-fixed-top'}[items.length > 0]")
+            .navbar-inner
+                button.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a(href='/').brand
+                .nav-collapse.collapse
+                  div(ng-include="'/partials/en/nav.html'", )
+        .container
+            .row
+                .span12
+                    img(src="/img/lions.svg", style="height: 150px")
+                    img(src="/img/SM_STORM_logo.png", style="margin-left: 50px;")
+
+
+                    img.pull-right(src="/img/logitech-g.svg", style="height: 100px; margin-top: 50px;")
+
+
+        .container.main-content
+            div(ng-view)
+          .push
     footer.footer
         .container
             p

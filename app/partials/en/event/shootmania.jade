@@ -1,0 +1,37 @@
+.container
+    .row
+        .span6.offset3(style="text-align: center")
+            img(src="//cdn.bracket.no/img/lions.svg", style="height: 300px")
+            | <br />
+
+        .span6.offset3.well
+                form.form-horizontal(name="Login",ng-controller="AuthenticationCtrl")
+                    legend.text-error(style="text-align:center") Please authenticate
+
+                    div.control-group
+                        label.control-label Email
+                        div.controls
+                            input(type="email",placeholder="Email", ng-model="user.email")
+                    div.control-group
+                        label.control-label Password
+                        div.controls
+                            input(type="password",placeholder="Password", ng-model="user.password")
+                    div.control-group
+                        label.control-label
+                            button.btn.btn-primary(type="submit", ng-click="login()")
+                                | Sign in
+                        div.controls
+                            label.checkbox
+                                input(type="checkbox")
+                                | Remember me
+
+                    div.control-group
+                        div.controls
+                            button.btn.btn-small.btn-success(type="submit", ng-click="$location.path('/user/register')")
+                                | Register a new account
+                            button.btn.btn-small.btn-inverse(type="submit")
+                                | Recover lost password
+        .span12(style="text-align: center")
+            h4.text-warning We are opening parts of our website to encompass a
+            a(ng-href="http://www.gathering.org")
+                img(src="//cdn.bracket.no/img/singularity.png")

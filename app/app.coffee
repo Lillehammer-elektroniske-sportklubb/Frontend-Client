@@ -33,7 +33,7 @@ App.config([
         {
           templateUrl:
             config.baseurl + '/partials/' +
-            config.localization + '/event/shootmania.html'
+            config.localization + '/maintenance/login.html'
         }
       )
       .when('/browser',

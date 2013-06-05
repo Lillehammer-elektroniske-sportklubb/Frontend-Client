@@ -48,12 +48,6 @@ controller.controller('BracketCtrl', [
     # Uses the url to determine if the selected
     # menu item should have the class active.
     $rootScope.pageTitle = "Oslo Lions Elektroniske Sportsklubb"
-    $rootScope.config = {
-      maintenance: false
-      baseUrl: '//cdn.bracket.no'
-      backendUrl: '//locahost:port'
-    }
-
     ###
       Authenticate Guest
     ###

@@ -1,8 +1,8 @@
 service.constant 'config', -> {
   # backendUrl: '//backend.bracket.no'
-  backendUrl: '//localhost:port'
+  backendUrl: '//backend.bracket.no'
   localization: 'en'
-  baseurl: '//localhost:3333'
+  baseurl: '//www.lionsek.com'
 }
 
 

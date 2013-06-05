@@ -1,0 +1,42 @@
+.container
+    .row
+        .span12(style="text-align: center")
+            img(src="/img/Lions_Logotype_Fixed.svg", style="height: 400px")
+            br
+            img(src="/img/logitech-g.svg", style="height: 125px")
+
+
+        .span12(style="text-align: center")
+            form.form-horizontal(name="Login",ng-controller="AuthenticationCtrl",style="width:450px; text-align:left; display:inline-block;")
+                legend.text-error(style="text-align:center")
+
+                div.control-group
+                    label.control-label Email
+                    div.controls
+                        input(type="email",placeholder="Email", ng-model="user.email")
+                div.control-group
+                    label.control-label Password
+                    div.controls
+                        input(type="password",placeholder="Password", ng-model="user.password")
+                div.control-group
+                    label.control-label
+                        button.btn.btn-primary(type="submit", ng-click="login()")
+                            | Sign in
+                    div.controls
+                        label.checkbox
+                            input(type="checkbox")
+                            | Remember me
+        .span12(style="text-align:center")
+
+            div(style="display:inline-block; width: 450px")
+                hr(style="margin:0; padding:0; border: 0; border-top: 1px solid #e5e5e5")
+                a(href="http://www.noroff.com", target="_blank", title="Noroff University College", alt="Noroff Logo")
+                    img(src="/img/Noroff-Logo-NUC-RGB.svg", style="height: 75px")
+                a(href="http://www.swedishhost.se", target="_blank", title="SwedishHost", alt="SwedishHost Logo", style="padding: 0 10px")
+                    img(src="/img/swedishhost.png", style="height: 50px")
+               // - div.control-group
+                    div.controls
+                        button.btn.btn-small.btn-success(type="submit", ng-click="$location.path('/user/register')")
+                            | Register a new account
+                        button.btn.btn-small.btn-inverse(type="submit")
+                            | Recover lost password

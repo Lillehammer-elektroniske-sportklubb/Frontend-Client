@@ -7,16 +7,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title ng-bind-template="{{pageTitle}}"></title>
-    <link rel="stylesheet" href="/css/app.css"><!--[if lte IE 7]>
+    <link rel="stylesheet" href="//cdn.bracket.no/css/app.css"><!--[if lte IE 7]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script><![endif]--><!--[if lte IE 8]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <script type="text/javascript" src="//use.typekit.net/pbu2sjc.js"></script>
-    <script type="text/javascript">
-      try{Typekit.load();}catch(e){}
-      
+    <script>
+      window.brunch = window.brunch || {};
+      window.brunch['auto-reload'] = {
+        enabled: true
+      };
     </script>
-    <script src="/js/vendor.js"></script>
-    <script src="/js/app.js"></script>
+    <script></script>
+    <script src="//cdn.bracket.no/js/vendor.js"></script>
+    <script src="//cdn.bracket.no/js/app.js"></script>
   </head>
   <body ng-controller="BracketCtrl">
     <div class="wrapper">
@@ -24,8 +26,13 @@
         <div class="navbar-inner">
           <button data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="brand"></a>
           <div class="nav-collapse collapse">
-            <div ng-include="'/partials/en/nav.html'"></div>
+            <div ng-include="'//cdn.bracket.no/partials/en/nav.html'"></div>
           </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="span12"><img src="//cdn.bracket.no/img/lions.svg" style="height: 150px"><img src="//cdn.bracket.no/img/SM_STORM_logo.png" style="margin-left: 50px;"><img src="//cdn.bracket.no/img/logitech-g.svg" style="height: 100px; margin-top: 50px;" class="pull-right"></div>
         </div>
       </div>
       <div class="container main-content">
@@ -37,7 +44,7 @@
       <div class="container">
         <p><small>
             <div>www.LionsEK.com: v<span app-version></span></div>
-            <div>&copy; 2007-2013 Lions eSportsKlubb (996180247)</div></small></p>
+            <div>&copy; 2007-2012 Lions eSportsKlubb (996180247)</div></small></p>
       </div>
     </footer>
   </body>

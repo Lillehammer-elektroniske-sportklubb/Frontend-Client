@@ -1,26 +1,37 @@
 
 controller.controller('AuthenticationCtrl', [
-  '$rootScope', '$scope', 'authService','TokenHandler', '$http'
-  (rootScope, scope, authService, TokenHandler, http) ->
+  '$rootScope', '$scope', 'authService','TokenHandler', '$http',
+  '$cookieStore', '$location','SessionService'
+  (
+    rootScope, scope, authService, TokenHandler, http,
+    cookieStore, location,SessionService
+
+  ) ->
     # Holds all the requests which fail due to 401 response
 
 
-    scope.submit = () ->
-      http.post('http://localhost:9000/user/login'
-      ,scope.user).success((data) ->
-        TokenHandler.set(data)
-        console.log(data)
-      )
 
 
 
-
-    rootScope.$on('event:auth:loginRequired', () ->
-
-
-    )
 
     scope.login = () ->
+      if(scope.user != undefined)
+        if(
+          scope.user.email != undefined &&
+          scope.user.password != undefined
+        )
+          session = new SessionService
+          session.username = scope.user.email
+          session.password = scope.user.password
+
+          session.$save(null,
+            (data) ->
+              cookieStore.put("key",data.sessionKey)
+              TokenHandler.setToken(data.sessionKey)
+            (data) ->
+              console.log("error", data)
+
+          )
 
 
 

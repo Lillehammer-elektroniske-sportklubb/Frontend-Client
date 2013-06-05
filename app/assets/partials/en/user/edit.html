@@ -1,0 +1,81 @@
+<!--
+<Created>with IntelliJ IDEA.</Created>
+<User>
+  <Christophe></Christophe>
+</User>
+<Date>
+  <18 class="03 13"></18>
+</Date>
+<Time>
+  <19:08></19:08>
+</Time>
+<To>change this template use File | Settings | File Templates.</To>-->
+<div class="row">
+  <div class="span12">
+    <h1>Alter account information</h1>
+  </div>
+  <form name="editForm" ng-controller="UsersCtrl" ng-submit="update(user)" class="form-horizontal span12">
+    <legend>General information</legend>
+    <div class="control-group">
+      <label class="control-label">Firstname</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.firstname" required="required"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Surname</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.lastname" required="required"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Gender</label>
+      <div class="controls">
+        <select ng-model="user.profile.gender" required="required">
+          <option value="m">Male</option>
+          <option value="f">Female</option>
+        </select>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Mobilephone number</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.mobilenumber" required="required"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Date of birth</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.dateOfBirth" required="required" ui-date="true"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Nationality</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.nationality" required="required"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Address</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.address" required="required"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Postcode</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.postCode" required="required"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Postplace</label>
+      <div class="controls">
+        <input type="text" ng-model="user.profile.postPlace" required="required"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <hr/>
+      <button type="submit" class="btn btn-success pull-right">Save changes</button>
+    </div>
+  </form>
+</div>

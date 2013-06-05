@@ -1,0 +1,37 @@
+
+<ul>
+  <li><b>Game:</b><span> {{ tournament.game.name }}</span></li>
+  <li><b>CompoID:</b><span> {{ tournament._id }}</span></li>
+  <li><b>Creator:</b><span> {{ tournament.creator.name }}</span></li>
+  <li><b>Compo start:</b><span> {{ tournament.start | date:'medium' }}</span></li>
+  <li><b>Contestants:</b><span> {{ tournament.signups.length }} / {{ tournament.slots }}</span></li>
+  <li><b>Format:</b><span> {{ tournament.format }}</span></li>
+  <li><b>Venue:</b><span> {{ tournament.venue }}</span></li>
+  <li ng-show="tournament.groupPlay != null"><b>Groupplay:</b><span> {{ tournament.groupPlay.description }}</span></li>
+  <li ng-show="tournament.playoffs != null"><b>Playoffs:</b><span> {{ tournament.playoffs.description }}</span></li>
+  <li><b>Entry requirements:</b>
+    <div>
+      <div ng-class="{true: 'text-error'}[0 &lt; tournament.requirements.numplayers]"> 1/{{ tournament.requirements.numplayers }} required players</div>
+      <div ng-class="{false: 'text-error'}[!tournament.requirements.guid]"><i class="icon icon-warning-sign"></i><span>You do not have enough players with registered GUID</span></div>
+    </div>
+  </li>
+</ul>
+<div class="row">
+  <div class="span3">
+    <button ng-click="$location.path('/tournament/rules/' + tournament._id)" class="btn btn-block"><i class="icon icon-book"></i> Rules</button>
+  </div>
+  <div class="span3">
+    <button ng-click="$location.path('/tournament/join/' + tournament._id)" class="btn btn-block btn-success"><i class="icon icon-signin"></i> Join</button>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+    <h3>Prizes</h3>
+    <ul>
+      <li>1. 5000€</li>
+      <li>2. 2000€</li>
+      <li>3. 500€</li>
+      <li>4. Hardware</li>
+    </ul>
+  </div>
+</div>

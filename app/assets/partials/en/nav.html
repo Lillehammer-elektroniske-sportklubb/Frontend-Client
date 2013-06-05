@@ -1,0 +1,14 @@
+
+<div>
+  <ul class="nav">
+    <li ng-repeat="item in items" ng-class="getClass('{{item.activeOn}}')"><a href="{{ item.link }}"><span>{{ item.title }}</span></a></li>
+  </ul>
+  <ul class="nav pull-right">
+    <li class="divider-vertical"></li>
+    <li ng-class="getClass('/help')" class="dropdown"><a data-toggle="dropdown" ng-href="/help" data-target="#" class="dropdown-toggle"><span>Help</span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a>New tournament</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

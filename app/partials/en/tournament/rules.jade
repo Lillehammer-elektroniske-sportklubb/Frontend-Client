@@ -1,0 +1,7 @@
+div.container(ng-controller="TournamentCtrl")
+    div.row
+        div.span12(ng-include="'/partials/en/tournament/nav.html'")
+        div.span6
+            h1 Rules
+            div(ph-txt, num-paragraphs="15")
+        div.span6(ng-include="'/partials/en/tournament/sidebar.html'")

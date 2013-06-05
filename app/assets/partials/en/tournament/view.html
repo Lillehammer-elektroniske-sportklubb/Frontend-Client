@@ -1,0 +1,25 @@
+<!--
+<Created>with IntelliJ IDEA.</Created>
+<User>
+  <Christophe></Christophe>
+</User>
+<Date>
+  <18 class="03 13"></18>
+</Date>
+<Time>
+  <21:41></21:41>
+</Time>
+<To>change this template use File | Settings | File Templates.</To>-->
+<div ng-controller="TournamentCtrl" class="container">
+  <div class="row">
+    <div ng-include="'/partials/en/tournament/nav.html'" class="span12"></div>
+    <div class="span6">
+      <div ng-repeat="item in tournament.news"><img ph-img="570x200" class="img-rounded"/>
+        <h2 ph-txt="ph-txt" num-sentences="1"></h2>
+        <p ph-txt="ph-txt" num-paragraphs="2"></p>
+        <hr/>
+      </div>
+    </div>
+    <div ng-include="'/partials/en/tournament/sidebar.html'" class="span6"></div>
+  </div>
+</div>

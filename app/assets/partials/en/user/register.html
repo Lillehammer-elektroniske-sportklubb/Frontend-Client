@@ -1,0 +1,130 @@
+<!--
+<Created>with IntelliJ IDEA.</Created>
+<User>
+  <Christophe></Christophe>
+</User>
+<Date>
+  <18 class="03 13"></18>
+</Date>
+<Time>
+  <19:08></19:08>
+</Time>
+<To>change this template use File | Settings | File Templates.</To>-->
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h1>Register user account</h1>
+    </div>
+    <form name="registerForm" ng-controller="UsersCtrl" class="form-horizontal span12">
+      <legend>Account information</legend>
+      <div class="row">
+        <div class="span3">
+          <div class="control-group">
+            <label class="control-label">Username (Email)</label>
+            <div class="controls">
+              <input type="email" ng-model="username" required="required"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Confirm email</label>
+            <div class="controls">
+              <input type="email" name="confirmationUsername" ng-model="confirmationUsername" required="required" ui-validate-equals="username"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Password</label>
+            <div class="controls">
+              <input type="password" ng-model="password" required="required"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Confirm password</label>
+            <div class="controls">
+              <input type="password" name="confirmationPassword" ng-model="confirmationPassword" required="required" ui-validate-equals="password"/>
+            </div>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="control-group">
+            <div class="controls">&nbsp;</div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <div ng-show="registerForm.confirmationUsername.$error.equal">Both emails must match</div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">&nbsp;</div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <div ng-show="registerForm.confirmationPassword.$error.equal">Both passwords must match</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <legend>General information</legend>
+      <div class="control-group">
+        <label class="control-label">Firstname</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.firstname" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Surname</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.surname" required="required"/>
+        </div>
+      </div>
+      <div ng-init="profile.gender = 'm'" class="control-group">
+        <label class="control-label">Gender</label>
+        <div class="controls">
+          <select ng-model="profile.gender" required="required">
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Mobilephone number</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.mobilenumber" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Date of birth</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.dateOfBirth" required="required" ui-date="true"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Nationality</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.nationality" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Address</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.address" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Postcode</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.postCode" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Postplace</label>
+        <div class="controls">
+          <input type="text" ng-model="profile.postPlace" required="required"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <hr/>
+        <button type="submit" ng-click="register()" class="btn btn-success pull-right">Register your new account</button>
+      </div>
+    </form>
+  </div>
+</div>

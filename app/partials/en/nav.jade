@@ -1,0 +1,16 @@
+div
+    ul.nav
+        li(ng-repeat="item in items", ng-class="getClass('{{item.activeOn}}')")
+            a(href="{{ item.link }}")
+                span {{ item.title }}
+
+
+    ul.nav.pull-right
+        li.divider-vertical
+        li.dropdown(ng-class="getClass('/help')")
+            a.dropdown-toggle(data-toggle="dropdown",ng-href='/help', data-target="#")
+                span Help
+                b.caret
+            ul.dropdown-menu
+                li
+                    a New tournament

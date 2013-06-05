@@ -1,0 +1,42 @@
+
+<div class="container">
+  <div class="row">
+    <div style="text-align: center" class="span12"><img src="/img/Lions_Logotype_Fixed.svg" style="height: 400px"/><br/><img src="/img/logitech-g.svg" style="height: 125px"/></div>
+    <div style="text-align: center" class="span12">
+      <form name="Login" ng-controller="AuthenticationCtrl" style="width:450px; text-align:left; display:inline-block;" class="form-horizontal">
+        <legend style="text-align:center" class="text-error"></legend>
+        <div class="control-group">
+          <label class="control-label">Email</label>
+          <div class="controls">
+            <input type="email" placeholder="Email" ng-model="user.email"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Password</label>
+          <div class="controls">
+            <input type="password" placeholder="Password" ng-model="user.password"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">
+            <button type="submit" ng-click="login()" class="btn btn-primary">Sign in</button>
+          </label>
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox"/>Remember me
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div style="text-align:center" class="span12">
+      <div style="display:inline-block; width: 450px">
+        <hr style="margin:0; padding:0; border: 0; border-top: 1px solid #e5e5e5"/><a href="http://www.noroff.com" target="_blank" title="Noroff University College" alt="Noroff Logo"><img src="/img/Noroff-Logo-NUC-RGB.svg" style="height: 75px"/></a><a href="http://www.swedishhost.se" target="_blank" title="SwedishHost" alt="SwedishHost Logo" style="padding: 0 10px"><img src="/img/swedishhost.png" style="height: 50px"/></a>
+      </div><!-- - div.control-group
+      <div class="controls">
+        <button type="submit" ng-click="$location.path('/user/register')" class="btn btn-small btn-success">Register a new account</button>
+        <button type="submit" class="btn btn-small btn-inverse">Recover lost password</button>
+      </div>-->
+    </div>
+  </div>
+</div>

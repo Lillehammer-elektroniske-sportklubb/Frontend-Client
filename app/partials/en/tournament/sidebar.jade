@@ -1,0 +1,53 @@
+ul
+    li
+        b Game:
+        span  {{ tournament.game.name }}
+    li
+        b CompoID:
+        span  {{ tournament._id }}
+    li
+        b Creator:
+        span  {{ tournament.creator.name }}
+    li
+        b Compo start:
+        span  {{ tournament.start | date:'medium' }}
+    li
+        b Contestants:
+        span  {{ tournament.signups.length }} / {{ tournament.slots }}
+    li
+        b Format:
+        span  {{ tournament.format }}
+    li
+        b Venue:
+        span  {{ tournament.venue }}
+    li(ng-show="tournament.groupPlay != null")
+        b Groupplay:
+        span  {{ tournament.groupPlay.description }}
+    li(ng-show="tournament.playoffs != null")
+        b Playoffs:
+        span  {{ tournament.playoffs.description }}
+    li
+        b Entry requirements:
+        div
+            div(ng-class="{true: 'text-error'}[0 < tournament.requirements.numplayers]")  1/{{ tournament.requirements.numplayers }} required players
+            div(ng-class="{false: 'text-error'}[!tournament.requirements.guid]")
+                i.icon.icon-warning-sign
+                span You do not have enough players with registered GUID
+
+div.row
+    div.span3
+        button.btn.btn-block(ng-click="$location.path('/tournament/rules/' + tournament._id)")
+            i.icon.icon-book
+            |  Rules
+    div.span3
+        button.btn.btn-block.btn-success(ng-click="$location.path('/tournament/join/' + tournament._id)")
+            i.icon.icon-signin
+            |  Join
+div.row
+    div.span6
+        h3 Prizes
+        ul
+            li 1. 5000€
+            li 2. 2000€
+            li 3. 500€
+            li 4. Hardware

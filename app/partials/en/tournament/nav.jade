@@ -1,0 +1,20 @@
+ul.nav.nav-tabs
+    li(ng-class="getClass('/tournament/dashboard')")
+        a(ng-href='/#/tournament/dashboard/{{ tournament._id }}')
+            span Dashboard
+    li(ng-class="getClass('/tournament/contestants')")
+        a(ng-href='/#/tournament/contestants/{{ tournament._id }}')
+            span Contestants
+    li(ng-class="getClass('/tournament/rules')")
+        a(ng-href='/#/tournament/rules/{{ tournament._id }}')
+            span Rules
+ul.nav.nav-pills
+    li(ng-class="getClass('/tournament/checkin')")
+        a.alert.alert-error.text-error(ng-href='/#/tournament/stage/{{ tournament._id }}/1', tooltip-placement="bottom", tooltip="Check in is over!")
+            span Stage 1: Check in
+    li.disabled(ng-class="getClass('/tournament/groups')")
+        a.alert.text-warning(ng-href='/#/tournament/stage/{{ tournament._id }}/2', tooltip-placement="bottom", tooltip="We are currently in the group play!")
+            span Stage 2: Group play
+    li.disabled(ng-class="getClass('/tournament/playoffs')")
+        a(ng-href='/#/tournament/playoffs/{{ tournament._id }}')
+            span Stage 3: Play off

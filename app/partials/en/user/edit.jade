@@ -1,0 +1,55 @@
+//
+   Created with IntelliJ IDEA.
+   User: Christophe
+   Date: 18.03.13
+   Time: 19:08
+   To change this template use File | Settings | File Templates.
+
+
+div.row
+    div.span12
+        h1 Alter account information
+    form.form-horizontal.span12(name="editForm",ng-controller="UsersCtrl", ng-submit="update(user)")
+        legend General information
+        div.control-group
+            label.control-label Firstname
+            div.controls
+                input(type="text", ng-model="user.profile.firstname",required)
+        div.control-group
+            label.control-label Surname
+            div.controls
+                input(type="text", ng-model="user.profile.lastname",required)
+        div.control-group
+            label.control-label Gender
+            div.controls
+                select(ng-model="user.profile.gender", required)
+                    option(value="m") Male
+                    option(value="f") Female
+        div.control-group
+            label.control-label Mobilephone number
+            div.controls
+                input(type="text", ng-model="user.profile.mobilenumber", required)
+        div.control-group
+            label.control-label Date of birth
+            div.controls
+                input(type="text", ng-model="user.profile.dateOfBirth", required, ui-date="true")
+        div.control-group
+            label.control-label Nationality
+            div.controls
+                input(type="text", ng-model="user.profile.nationality", required)
+        div.control-group
+            label.control-label Address
+            div.controls
+                input(type="text", ng-model="user.profile.address", required)
+        div.control-group
+            label.control-label Postcode
+            div.controls
+                input(type="text", ng-model="user.profile.postCode", required)
+        div.control-group
+            label.control-label Postplace
+            div.controls
+                input(type="text", ng-model="user.profile.postPlace", required)
+
+        div.control-group
+            hr
+            button.btn.btn-success.pull-right(type="submit") Save changes

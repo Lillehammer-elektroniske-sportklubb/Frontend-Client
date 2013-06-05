@@ -1,14 +1,17 @@
-**/.DS_Store
-nbproject
-manifest.mf
-build.xml
+# Folders
 
 .project
 .settings
 .idea/*
-
 _public
+nbproject
 node_modules/*
-npm-debug.log
 
+# Files
+
+**/.DS_Store
+*.html
+manifest.mf
+build.xml
+npm-debug.log
 test/test-results.xml
